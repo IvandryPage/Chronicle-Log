@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="AppBackgroundColor" Color="#0C0D10" />
+    <SolidColorBrush x:Key="SideBarBackgroundColor" Color="#040409" />
+    <SolidColorBrush x:Key="ActiveMenuBackgroundColor" Color="#101018" />
+    <SolidColorBrush x:Key="TextForegroundColor" Color="#FEFEFE" />
+    <SolidColorBrush x:Key="SecondaryTextForegroundColor" Color="#82C254" />
+    <SolidColorBrush x:Key="TertiaryTextForegroundColor" Color="#F41316" />
+    <SolidColorBrush x:Key="ButtonBackgroundColor" Color="#08A254" />
+    <SolidColorBrush x:Key="SecondaryButtonBackgroundColor" Color="#F44336" />
+    <SolidColorBrush x:Key="LogQueryBackgroundColor" Color="#080606" />
+    <SolidColorBrush x:Key="ScrollBarBackgroundColor" Color="#595959" />
+
+    <Color x:Key="LogQueryBoxShadowColor">#412854</Color>
+</ResourceDictionary>

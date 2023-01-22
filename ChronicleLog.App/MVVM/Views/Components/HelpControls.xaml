@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="ChronicleLog.App.MVVM.Views.Components.HelpButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChronicleLog.App.MVVM.Views.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="225" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" x:Name="HelpBox" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            
+            <Border Background="#17242A" CornerRadius="5">
+                <Grid Margin="10 5">
+                    <TextBlock 
+                        Foreground="{StaticResource TextForegroundColor}" 
+                        TextWrapping="Wrap">
+                        <Run Text="Pro Tips:" />
+                        <LineBreak />
+                        <Run Text="- Type any keyword to open a category if it doesn't &#x0a;   exist, it will prompt you to create one." />
+                        <LineBreak />
+                        <Run Text="- Create a category to store your category list. &#x0a;   You're on your own, Kid." />
+                        <LineBreak />
+                        <LineBreak />
+                        <Run Text="Only" />
+                        <Run Text="YOU" FontWeight="Bold"/>
+                        <Run Text="who know how-to use the app." />
+                        <LineBreak />
+                        <Run Text="Click the button again to close, sorry." />
+                    </TextBlock>
+                    
+                    <Border Grid.Row="1" Background="#17242A" Width="40" Height="60" Panel.ZIndex="-1" HorizontalAlignment="Right" Margin="0 20 90 0">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <SkewTransform AngleX="50" AngleY="65" />
+                                <ScaleTransform ScaleY="0.9" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+        
+        <Button Grid.Row="1" Width="25" HorizontalAlignment="Right" Click="HelpButton_Click" Opacity="0.8">
+            <Button.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="{StaticResource TextForegroundColor}" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Focusable" Value="False" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border
+                                    CornerRadius="50"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding Foreground}"
+                                    BorderThickness="2">
+                                    <ContentPresenter 
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Content="?"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#313131" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</UserControl>
