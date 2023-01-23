@@ -12,4 +12,5 @@
     <SolidColorBrush x:Key="ScrollBarBackgroundColor" Color="#595959" />
 
     <Color x:Key="LogQueryBoxShadowColor">#412854</Color>
+    <Color x:Key="WhiteColor">#FEFEFE</Color>
 </ResourceDictionary>

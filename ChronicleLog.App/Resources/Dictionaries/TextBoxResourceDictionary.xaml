@@ -1,7 +1,45 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style TargetType="{x:Type TextBox}" x:Key="CustomTextBox">
+    <Style TargetType="{x:Type TextBox}" x:Key="TransparentTextBox">
         <!-- TODO : Create a custom textbox for add view textboxes -->
-        <Setter Property="Opacity" Value="0.5" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource TextForegroundColor}" />
+        <Setter Property="BorderBrush" Value="{StaticResource TextForegroundColor}" />
+        <Setter Property="CaretBrush" Value="AliceBlue" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="5 2" />
+
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                To="Purple" 
+                                Duration="0:0:0.5" 
+                                Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)" />
+                            <ThicknessAnimation
+                                To="1.5"
+                                Duration="0:0:0.2"
+                                Storyboard.TargetProperty="BorderThickness" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                To="{StaticResource WhiteColor}" 
+                                Duration="0:0:0.5" 
+                                Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)" />
+                            <ThicknessAnimation
+                                To="1"
+                                Duration="0:0:0.2"
+                                Storyboard.TargetProperty="BorderThickness" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

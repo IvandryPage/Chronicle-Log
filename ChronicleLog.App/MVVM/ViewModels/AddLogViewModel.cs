@@ -9,9 +9,39 @@ namespace ChronicleLog.App.MVVM.ViewModels
 	{
 		private readonly LogQueriesStore _logQueriesStore;
 		private readonly Services.DataService _dataService;
-		public string QueryCategory { get; set; }
-		public string QueryTitle { get; set; }
-		public string QueryParagraph { get; set; }
+
+		private string _queryCategory;
+		public string QueryCategory
+		{
+			get => _queryCategory;
+			set
+			{
+				_queryCategory = value;
+				OnPropertyChanged(nameof(QueryCategory));
+			}
+		}
+
+		private string _queryTitle;
+		public string QueryTitle
+		{
+			get => _queryTitle;
+			set
+			{
+				_queryTitle = value;
+				OnPropertyChanged(nameof(QueryTitle));
+			}
+		}
+
+		private string _queryParagraph;		
+		public string QueryParagraph
+		{
+			get => _queryParagraph;
+			set
+			{
+				_queryParagraph = value;
+				OnPropertyChanged(nameof(QueryParagraph));
+			}
+		}
 
 		public ICommand CreateQueryCommand { get; }
 		public ICommand ClearInputCommand { get; }
@@ -26,31 +56,17 @@ namespace ChronicleLog.App.MVVM.ViewModels
 				_logQueriesStore.RequestedLogQueryViewModels[0].Category : string.Empty;
 		}
 
-		private void ClearInput()
-		{
-			QueryCategory = QueryTitle = QueryParagraph = string.Empty;
-			NotifyUI();
-		}
+		private void ClearInput() => QueryCategory = QueryTitle = QueryParagraph = string.Empty;
 
 		private void CreateQuery()
 		{
 			LogQueryModel queryModel = new LogQueryModel(System.DateTime.Now, QueryCategory, QueryTitle, QueryParagraph.Trim());
-			LogQueryViewModel queryViewModel = new LogQueryViewModel(queryModel);
+
+			QueryTitle = QueryParagraph = string.Empty;
 
 			_dataService.Create(queryModel);
 
-			if ( _logQueriesStore.RequestedLogQueryViewModels.Count > 0 && QueryCategory == _logQueriesStore.RequestedLogQueryViewModels[0].Category )
-				_logQueriesStore.RequestedLogQueryViewModels.Add(queryViewModel);
-
-			QueryTitle = QueryParagraph = string.Empty;
-			NotifyUI();
-		}
-
-		private void NotifyUI()
-		{
-			OnPropertyChanged(QueryTitle);
-			OnPropertyChanged(QueryParagraph);
-			OnPropertyChanged(QueryCategory);
+			_dataService.SpecifiedRead(_logQueriesStore, QueryCategory);
 		}
 	}
 }

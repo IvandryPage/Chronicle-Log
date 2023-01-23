@@ -35,6 +35,7 @@ namespace ChronicleLog.App.Services
 
 		public void SpecifiedRead(LogQueriesStore logStore, string requestedCategory)
 		{
+			logStore.RequestedLogQueryViewModels.Clear();
 			using var db = new LiteDatabase(GetConnectionString());
 
 			ILiteCollection<LogQueryModel> collection = db.GetCollection<LogQueryModel>(_collectionName);

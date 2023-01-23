@@ -26,6 +26,7 @@
             Margin="0 0 10 0"
             VerticalContentAlignment="Center"
             TextWrapping="Wrap"
+            Style="{StaticResource TransparentTextBox}"
             Text="{Binding QueryTitle}" />
         <TextBox 
             Grid.Row="0"
@@ -33,6 +34,7 @@
             PreviewKeyDown="CategoryTextBox_PreviewKeyDown"
             VerticalContentAlignment="Center"
             CharacterCasing="Upper"
+            Style="{StaticResource TransparentTextBox}"
             Text="{Binding QueryCategory}" />
         <TextBox 
             Grid.Row="1" 
@@ -44,6 +46,7 @@
             VerticalContentAlignment="Top" 
             AcceptsReturn="True"
             TextWrapping="Wrap"
+            Style="{StaticResource TransparentTextBox}"
             Text="{Binding QueryParagraph}" />
         
         <StackPanel Grid.Row="1" Grid.Column="2">

@@ -67,8 +67,6 @@ namespace ChronicleLog.App.MVVM.ViewModels
 
 		private void DetachLogCategory()
 		{
-			_logQueriesStore.RequestedLogQueryViewModels.Clear();
-
 			_dataService.SpecifiedRead(_logQueriesStore, _logCategoryValue);
 
 			if ( _logQueriesStore.RequestedLogQueryViewModels.Count != 0 )
