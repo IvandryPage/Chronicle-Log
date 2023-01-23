@@ -2,7 +2,7 @@ Chronicle Log
 ===============
 
 Chronicle Log is a **basic** journaling application. <br>
-But wait, even though it's a journal, but it keeps your journal a little bit private for non-hacker guy.
+But wait, even though it's a **basic** journal, but it keeps your journal a little bit private for non-hacker guy.
 
 This is how you use it: 
 
