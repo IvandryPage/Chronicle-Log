@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style TargetType="{x:Type TextBox}" x:Key="TransparentTextBox">
-        <!-- TODO : Create a custom textbox for add view textboxes -->
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{StaticResource TextForegroundColor}" />
         <Setter Property="BorderBrush" Value="{StaticResource TextForegroundColor}" />
@@ -19,7 +18,7 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation 
-                                            To="Purple" 
+                                            To="{StaticResource MulberryColor}" 
                                             Duration="0:0:0.2" 
                                             Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)" />
                                         <ThicknessAnimation
@@ -45,6 +44,7 @@
                             </Trigger.ExitActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
+                    
                     <Border
                         BorderThickness="{TemplateBinding BorderThickness}"
                         BorderBrush="{TemplateBinding BorderBrush}"
