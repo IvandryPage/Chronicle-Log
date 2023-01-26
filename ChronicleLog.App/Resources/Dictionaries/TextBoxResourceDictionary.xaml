@@ -8,38 +8,51 @@
         <Setter Property="CaretBrush" Value="AliceBlue" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="5 2" />
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="Local" />
 
-        <Style.Triggers>
-            <Trigger Property="IsFocused" Value="True">
-                <Trigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation 
-                                To="Purple" 
-                                Duration="0:0:0.5" 
-                                Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)" />
-                            <ThicknessAnimation
-                                To="1.5"
-                                Duration="0:0:0.2"
-                                Storyboard.TargetProperty="BorderThickness" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.EnterActions>
-                <Trigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation 
-                                To="{StaticResource WhiteColor}" 
-                                Duration="0:0:0.5" 
-                                Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)" />
-                            <ThicknessAnimation
-                                To="1"
-                                Duration="0:0:0.2"
-                                Storyboard.TargetProperty="BorderThickness" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.ExitActions>
-            </Trigger>
-        </Style.Triggers>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                            To="Purple" 
+                                            Duration="0:0:0.2" 
+                                            Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)" />
+                                        <ThicknessAnimation
+                                            To="1.5"
+                                            Duration="0:0:0.2"
+                                            Storyboard.TargetProperty="BorderThickness" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                            To="{StaticResource WhiteColor}" 
+                                            Duration="0:0:0.2" 
+                                            Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)" />
+                                        <ThicknessAnimation
+                                            To="1"
+                                            Duration="0:0:0.2"
+                                            Storyboard.TargetProperty="BorderThickness" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                    <Border
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        Background="{TemplateBinding Background}">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
