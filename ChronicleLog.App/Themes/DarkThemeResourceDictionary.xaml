@@ -13,4 +13,6 @@
 
     <Color x:Key="LogQueryBoxShadowColor">#412854</Color>
     <Color x:Key="WhiteColor">#FEFEFE</Color>
+    <Color x:Key="DarkColor">#0C0D10</Color>
+    <Color x:Key="MulberryColor">#C800A7</Color>
 </ResourceDictionary>

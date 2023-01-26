@@ -10,7 +10,7 @@
     d:DesignHeight="600"
     d:DesignWidth="690">
     
-    <StackPanel VerticalAlignment="Center">
+    <StackPanel VerticalAlignment="Center" KeyboardNavigation.TabNavigation="Cycle">
         <Border 
             Background="#FEFEFE"
             VerticalAlignment="Center"
