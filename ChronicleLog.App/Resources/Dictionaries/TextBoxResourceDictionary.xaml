@@ -46,6 +46,7 @@
                     </ControlTemplate.Triggers>
                     
                     <Border
+                        CornerRadius="2"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         Background="{TemplateBinding Background}">

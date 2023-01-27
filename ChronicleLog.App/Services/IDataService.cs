@@ -1,6 +1,5 @@
 ﻿using ChronicleLog.App.MVVM.Models;
 using ChronicleLog.App.Stores;
-using System.Threading.Tasks;
 
 namespace ChronicleLog.App.Services
 {

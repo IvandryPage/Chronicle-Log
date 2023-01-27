@@ -32,7 +32,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 			}
 		}
 
-		private string _queryParagraph;		
+		private string _queryParagraph;
 		public string QueryParagraph
 		{
 			get => _queryParagraph;

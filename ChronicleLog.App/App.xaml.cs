@@ -12,7 +12,7 @@ namespace ChronicleLog.App
 	{
 		private readonly LogQueriesStore _logQueriesStore;
 		private readonly DataService _dataService;
-		
+
 		public App()
 		{
 			_logQueriesStore = new LogQueriesStore();
