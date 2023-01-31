@@ -32,6 +32,7 @@
                     AutoWordSelection="True"
                     IsUndoEnabled="True"
                     MaxLength="20"
+                    SelectionBrush="DimGray"
                     Text="{Binding LogCategoryValue, UpdateSourceTrigger=PropertyChanged}"
                     PreviewKeyDown="DetachLogCategoryTextBox_PreviewKeyDown"
                     x:Name="DetachLogCategoryTextBox" />

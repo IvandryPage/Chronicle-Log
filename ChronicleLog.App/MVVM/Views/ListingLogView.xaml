@@ -16,9 +16,10 @@
         UseLayoutRounding="True" 
         BorderThickness="0"
         VirtualizingPanel.IsVirtualizing="True"
-        VirtualizingPanel.ScrollUnit="Pixel" 
+        VirtualizingPanel.ScrollUnit="Pixel"
         ScrollViewer.VerticalScrollBarVisibility="Visible"
-        ItemsSource="{Binding LogQueryViewModels}">
+        ItemsSource="{Binding LogQueryViewModels}"
+        x:Name="QueriesListView">
 
         <ListView.Resources>
             <Style TargetType="{x:Type ScrollBar}">
@@ -56,9 +57,30 @@
             </Style>
         </ListView.Resources>
 
+        <ListView.ItemContainerStyle>
+            <Style TargetType="ListViewItem">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFF" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                            <Border BorderThickness="1">
+                                <ContentPresenter 
+                                    HorizontalAlignment="Stretch" 
+                                    VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ListView.ItemContainerStyle>
+        
         <ListView.ItemTemplate>
             <DataTemplate>
-                <components:LogQuery MaxWidth="620"/>
+                <components:LogQuery MaxWidth="{Binding ElementName=QueriesListView, Path=Width}" Margin="40 5"/>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
