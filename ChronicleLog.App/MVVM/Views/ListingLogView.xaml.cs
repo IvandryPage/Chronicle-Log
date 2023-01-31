@@ -11,5 +11,10 @@ namespace ChronicleLog.App.MVVM.Views
 		{
 			InitializeComponent();
 		}
+
+		private void ListingUserControl_SizeChanged(object sender, System.Windows.SizeChangedEventArgs e)
+		{
+			ListingListView.MinWidth = this.ActualWidth - 80;
+		}
 	}
 }

@@ -6,10 +6,13 @@
              xmlns:local="clr-namespace:ChronicleLog.App.MVVM.Views" 
              xmlns:components="clr-namespace:ChronicleLog.App.MVVM.Views.Components"
              xmlns:viewmodel="clr-namespace:ChronicleLog.App.MVVM.ViewModels"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             x:Name="ListingUserControl"
+             SizeChanged="ListingUserControl_SizeChanged"
              d:DesignHeight="600" d:DesignWidth="690">
 
     <ListView 
+        x:Name="ListingListView"
         Background="Transparent" 
         Foreground="{StaticResource TextForegroundColor}" 
         HorizontalContentAlignment="Stretch" 
@@ -18,8 +21,7 @@
         VirtualizingPanel.IsVirtualizing="True"
         VirtualizingPanel.ScrollUnit="Pixel"
         ScrollViewer.VerticalScrollBarVisibility="Visible"
-        ItemsSource="{Binding LogQueryViewModels}"
-        x:Name="QueriesListView">
+        ItemsSource="{Binding LogQueryViewModels}">
 
         <ListView.Resources>
             <Style TargetType="{x:Type ScrollBar}">
@@ -67,9 +69,9 @@
                                     <Setter Property="Background" Value="#FFF" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
-                            <Border BorderThickness="1">
+                            <Border>
                                 <ContentPresenter 
-                                    HorizontalAlignment="Stretch" 
+                                    HorizontalAlignment="Center" 
                                     VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
@@ -80,7 +82,7 @@
         
         <ListView.ItemTemplate>
             <DataTemplate>
-                <components:LogQuery MaxWidth="{Binding ElementName=QueriesListView, Path=Width}" Margin="40 5"/>
+                <components:LogQuery MaxWidth="{Binding ElementName=ListingListView, Path=MinWidth}"/>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
