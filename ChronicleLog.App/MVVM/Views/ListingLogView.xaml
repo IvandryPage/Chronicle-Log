@@ -71,7 +71,7 @@
                             </ControlTemplate.Triggers>
                             <Border>
                                 <ContentPresenter 
-                                    HorizontalAlignment="Center" 
+                                    HorizontalAlignment="Stretch" 
                                     VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>

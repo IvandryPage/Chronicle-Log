@@ -43,9 +43,9 @@
             Focusable="False" 
             Grid.Column="1" 
             Grid.ColumnSpan="2" 
-            Grid.RowSpan="3" 
-            Margin="0 25 0 0" 
-            Content="{Binding CurrentView}" />
+            Grid.RowSpan="3"
+            Margin="0 25 0 0"
+            Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}" />
 
         <!--#region EssentialControls -->
         <Grid
@@ -90,7 +90,7 @@
                     Command="{Binding NavigateToDetachLogViewCommand}" />
                 <RadioButton 
                     GroupName="Navigation" 
-                    Content="Listing" 
+                    Content="Listing"
                     Command="{Binding NavigateToListingLogViewCommand}" />
                 <RadioButton 
                     GroupName="Navigation" 

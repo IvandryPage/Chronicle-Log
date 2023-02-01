@@ -8,35 +8,35 @@ namespace ChronicleLog.App.MVVM.ViewModels
 	{
 		private readonly LogQueriesStore _logQueriesStore;
 		private readonly Services.DataService _dataService;
-
-		private object _currentView;
-		public object CurrentView
-		{
-			get => _currentView;
-			set
-			{
-				_currentView = value;
-				OnPropertyChanged(nameof(CurrentView));
-			}
-		}
+		private readonly NavigationStore _navigationStore;
+		public object CurrentView => _navigationStore.CurrentView;
 
 		public ICommand NavigateToDetachLogViewCommand { get; }
 		public ICommand NavigateToListingLogViewCommand { get; }
 		public ICommand NavigateToAddLogViewCommand { get; }
 
-		public MainWindowViewModel(Services.DataService dataService, LogQueriesStore logQueriesStore)
+		public MainWindowViewModel(Services.DataService dataService, LogQueriesStore logQueriesStore, NavigationStore navigationStore)
 		{
 			_logQueriesStore = logQueriesStore;
 			_dataService = dataService;
-			NavigateToDetachLogView();
+			_navigationStore = navigationStore;
 
-			NavigateToDetachLogViewCommand = new RelayCommand(parameter => NavigateToDetachLogView());
-			NavigateToListingLogViewCommand = new RelayCommand(parameter => NavigateToListingLogView());
-			NavigateToAddLogViewCommand = new RelayCommand(parameter => NavigateToAddLogView());
+			_navigationStore.CurrentView = NavigateToDetachLogView();
+
+			_navigationStore.CurrentViewChanged += NavigationStore_CurrentViewChanged;
+
+			NavigateToDetachLogViewCommand = new RelayCommand(parameter => _navigationStore.CurrentView = NavigateToDetachLogView());
+			NavigateToListingLogViewCommand = new RelayCommand(parameter => _navigationStore.CurrentView = NavigateToListingLogView());
+			NavigateToAddLogViewCommand = new RelayCommand(parameter => _navigationStore.CurrentView = NavigateToAddLogView());
 		}
 
-		public void NavigateToDetachLogView() => CurrentView = new DetachLogViewModel(_dataService, _logQueriesStore);
-		public void NavigateToListingLogView() => CurrentView = new ListingLogViewModel(_logQueriesStore);
-		public void NavigateToAddLogView() => CurrentView = new AddLogViewModel(_dataService, _logQueriesStore);
+		private void NavigationStore_CurrentViewChanged()
+		{
+			OnPropertyChanged(nameof(CurrentView));
+		}
+
+		public object NavigateToDetachLogView() => new DetachLogViewModel(_dataService, _logQueriesStore, _navigationStore);
+		public object NavigateToListingLogView() => new ListingLogViewModel(_logQueriesStore);
+		public object NavigateToAddLogView() => new AddLogViewModel(_dataService, _logQueriesStore);
 	}
 }

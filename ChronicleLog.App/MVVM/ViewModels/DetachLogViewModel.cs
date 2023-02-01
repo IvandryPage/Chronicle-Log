@@ -9,28 +9,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 	{
 		private readonly LogQueriesStore _logQueriesStore;
 		private readonly Services.DataService _dataService;
-
-		private Visibility _messageVisibility;
-		public Visibility MessageVisibility
-		{
-			get => _messageVisibility;
-			set
-			{
-				_messageVisibility = value;
-				OnPropertyChanged(nameof(MessageVisibility));
-			}
-		}
-
-		private string _messageText;
-		public string MessageText
-		{
-			get => _messageText;
-			set
-			{
-				_messageText = value;
-				OnPropertyChanged(nameof(MessageText));
-			}
-		}
+		private readonly NavigationStore _navigationStore;
 
 		private string _logCategoryValue;
 		public string LogCategoryValue
@@ -39,29 +18,18 @@ namespace ChronicleLog.App.MVVM.ViewModels
 			set
 			{
 				_logCategoryValue = value;
-				MessageVisibility = Visibility.Collapsed;
 				OnPropertyChanged(nameof(LogCategoryValue));
-			}
-		}
-
-		private bool _isSucceed;
-		public bool IsSucceed
-		{
-			get => _isSucceed;
-			set
-			{
-				_isSucceed = value;
-				OnPropertyChanged(nameof(IsSucceed));
 			}
 		}
 
 		public ICommand DetachLogCategoryCommand { get; }
 
-		public DetachLogViewModel(Services.DataService dataService, LogQueriesStore logQueriesStore)
+		public DetachLogViewModel(Services.DataService dataService, LogQueriesStore logQueriesStore, NavigationStore navigationStore)
 		{
 			_logQueriesStore = logQueriesStore;
 			_dataService = dataService;
-			MessageVisibility = Visibility.Collapsed;
+			_navigationStore = navigationStore;
+
 			DetachLogCategoryCommand = new RelayCommand(parameter => DetachLogCategory());
 		}
 
@@ -71,15 +39,12 @@ namespace ChronicleLog.App.MVVM.ViewModels
 
 			if ( _logQueriesStore.RequestedLogQueryViewModels.Count != 0 )
 			{
-				MessageText = "Logs succesfully detached! Check \"Listing\" Menu";
-				IsSucceed = true;
+				_navigationStore.CurrentView = new ListingLogViewModel(_logQueriesStore);
 			}
 			else
 			{
-				MessageText = "Failed to detach logs. Category not found!";
-				IsSucceed = false;
+				MessageBox.Show("Tanyain mau buat category baru nggak");
 			}
-			MessageVisibility = Visibility.Visible;
 		}
 	}
 }

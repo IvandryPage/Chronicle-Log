@@ -12,11 +12,13 @@ namespace ChronicleLog.App
 	{
 		private readonly LogQueriesStore _logQueriesStore;
 		private readonly DataService _dataService;
+		private readonly NavigationStore _navigationStore;
 
 		public App()
 		{
 			_logQueriesStore = new LogQueriesStore();
 			_dataService = new DataService();
+			_navigationStore = new NavigationStore();
 		}
 
 		protected override void OnStartup(StartupEventArgs e)
@@ -25,7 +27,7 @@ namespace ChronicleLog.App
 
 			MainWindow window = new MainWindow()
 			{
-				DataContext = new MainWindowViewModel(_dataService, _logQueriesStore)
+				DataContext = new MainWindowViewModel(_dataService, _logQueriesStore, _navigationStore)
 			};
 			window.Show();
 		}

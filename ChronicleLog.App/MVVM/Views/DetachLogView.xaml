@@ -47,24 +47,7 @@
                     Command="{Binding DetachLogCategoryCommand}"
                     Style="{StaticResource RoundButton}"
                     Content="➔" />
-             </Grid>
+            </Grid>
         </Border>
-        
-        <TextBlock
-            Margin="0 5 0 0"
-            Visibility="{Binding MessageVisibility}"
-            HorizontalAlignment="Center"
-            Text="{Binding MessageText}">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="{StaticResource SecondaryTextForegroundColor}" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsSucceed}" Value="False">
-                            <Setter Property="Foreground" Value="{StaticResource TertiaryTextForegroundColor}" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
     </StackPanel>
 </UserControl>
