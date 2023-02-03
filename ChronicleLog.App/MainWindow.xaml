@@ -28,7 +28,7 @@
     
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="65"/>
             <ColumnDefinition Width="10.5*"/>
             <ColumnDefinition Width="2.5*"/>
         </Grid.ColumnDefinitions>
@@ -56,28 +56,34 @@
             <StackPanel VerticalAlignment="Center">
                 <StackPanel.Resources>
                     <ControlTemplate TargetType="{x:Type RadioButton}" x:Key="MenuRadioButton">
-                        <Grid 
+                        <Border
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}" 
                             VerticalAlignment="Center">
-                            <TextBlock 
+                            <ContentPresenter 
+                                Margin="4,0,0,0"
+                                Height="25"
+                                VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
-                                FontSize="14"
-                                Padding="5"
-                                Foreground="{TemplateBinding Foreground}"
-                                Text="{TemplateBinding Content}" />
-                        </Grid>
+                                RecognizesAccessKey="True" />
+                        </Border>
                     </ControlTemplate>
 
                     <Style TargetType="{x:Type RadioButton}">
                         <Setter Property="Background" Value="Transparent" />
                         <Setter Property="Foreground" Value="{StaticResource TextForegroundColor}" />
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="BorderBrush" Value="White" />
                         <Setter Property="Opacity" Value="0.65" />
+                        <Setter Property="Cursor" Value="Hand" />
                         <Setter Property="Template" Value="{StaticResource MenuRadioButton}" />
 
                         <Style.Triggers>
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter Property="Background" Value="{StaticResource ActiveMenuBackgroundColor}" />
                                 <Setter Property="Opacity" Value="0.85" />
+                                <Setter Property="BorderThickness" Value="0.5" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -85,17 +91,26 @@
 
                 <RadioButton 
                     GroupName="Navigation" 
-                    Content="Detach" 
                     IsChecked="True" 
-                    Command="{Binding NavigateToDetachLogViewCommand}" />
+                    Command="{Binding NavigateToDetachLogViewCommand}">
+                    <RadioButton.Content>
+                        <Path Height="20" Width="20" Data="m8 0c0 0 -8 0 -8 8c0 0 0 8 8 8c0 0 8 0 8 -8c0 0 0 -8 -8 -8M8 2c0 0 -6 0 -6 6c0 0 0 6 6 6c0 0 6 0 6 -6c0 0 0 -6 -6 -6M20 17l-5 -3.5l-2 2l5 5" Fill="{StaticResource TextForegroundColor}"/>
+                    </RadioButton.Content>
+                </RadioButton>
                 <RadioButton 
                     GroupName="Navigation" 
-                    Content="Listing"
-                    Command="{Binding NavigateToListingLogViewCommand}" />
+                    Command="{Binding NavigateToListingLogViewCommand}">
+                    <RadioButton.Content>
+                        <Path Height="20" Width="20" Data="M0 3l20 0l0 4l-20 0l0 -4m0 5l20 0l0 4l-20 0l0 -4m0 5l20 0l0 4l-20 0l0 -4" Fill="{StaticResource TextForegroundColor}"/>
+                    </RadioButton.Content>
+                </RadioButton>
                 <RadioButton 
                     GroupName="Navigation" 
-                    Content="Add" 
-                    Command="{Binding NavigateToAddLogViewCommand}" />
+                    Command="{Binding NavigateToAddLogViewCommand}">
+                    <RadioButton.Content>
+                        <Path Height="20" Width="20" Data="m8 0c0 0 -2 4 0 8c0 0 -4 2 -8 0l0 4c0 0 4 2 8 0c0 0 2 4 0 8l4 0c0 0 2 -4 0 -8c0 0 4 -2 8 0l0 -4c0 0 -4 -2 -8 0c0 0 -2 -4 0 -8l-4 0" Fill="{StaticResource TextForegroundColor}"/>
+                    </RadioButton.Content>
+                </RadioButton>
             </StackPanel>
         </Grid>
 

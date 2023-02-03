@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChronicleLog.App.Stores
 {
@@ -9,8 +7,9 @@ namespace ChronicleLog.App.Stores
 		private object _currentView;
 		public object CurrentView
 		{
-			get => _currentView; 
-			set { 
+			get => _currentView;
+			set
+			{
 				_currentView = value;
 				OnCurrentViewChanged();
 			}

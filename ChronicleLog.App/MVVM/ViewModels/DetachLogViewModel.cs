@@ -43,7 +43,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 			}
 			else
 			{
-				MessageBox.Show("Tanyain mau buat category baru nggak");
+				_navigationStore.CurrentView = new AddLogViewModel(_dataService, _logQueriesStore);
 			}
 		}
 	}
