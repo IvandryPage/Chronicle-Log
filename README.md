@@ -1,10 +1,9 @@
 Chronicle Log
 ===============
 
-Chronicle Log is a **basic** journaling application. <br>
-But wait, even though it's a **basic** journal, but it keeps your journal a little bit private for non-hacker guy.
+Chronicle Log is a simple journaling application that offers a "***secure***" platform for individuals to record and store their personal thoughts and experiences. Unlike other journaling apps, Chronicle Log places a ***strong emphasis on privacy***.
 
-This is how you use it: 
+To use Chronicle Log, you must first create your first entry of each category. This app operates differently than others in that it does not come with a pre-determined list of categories. Instead, it gives the user full control over their journaling experience by allowing them to create and categorize their entries as they see fit.
 
-> You need to input your journal category name in order to open it. And this application, doesn't have your category list by itself. You need to create it by yourself; relying on yourself.'
->> I know it's not smart enough, but i'm sorry for inconvenience. This is the best I can do right now.
+While Chronicle Log may not have all the bells and whistles of more advanced journaling apps, it provides a simple and straightforward way to journal your thoughts and memories.
+In conclusion, Chronicle Log is an option for individuals who value privacy and simplicity in their journaling experience.

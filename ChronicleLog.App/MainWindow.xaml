@@ -94,21 +94,33 @@
                     IsChecked="True" 
                     Command="{Binding NavigateToDetachLogViewCommand}">
                     <RadioButton.Content>
-                        <Path Height="20" Width="20" Data="m8 0c0 0 -8 0 -8 8c0 0 0 8 8 8c0 0 8 0 8 -8c0 0 0 -8 -8 -8M8 2c0 0 -6 0 -6 6c0 0 0 6 6 6c0 0 6 0 6 -6c0 0 0 -6 -6 -6M20 17l-5 -3.5l-2 2l5 5" Fill="{StaticResource TextForegroundColor}"/>
+                        <Path 
+                            Height="20" 
+                            Width="20" 
+                            Data="m8 0c0 0 -8 0 -8 8c0 0 0 8 8 8c0 0 8 0 8 -8c0 0 0 -8 -8 -8M8 2c0 0 -6 0 -6 6c0 0 0 6 6 6c0 0 6 0 6 -6c0 0 0 -6 -6 -6M20 17l-5 -3.5l-2 2l5 5" 
+                            Fill="{StaticResource TextForegroundColor}"/>
                     </RadioButton.Content>
                 </RadioButton>
                 <RadioButton 
                     GroupName="Navigation" 
                     Command="{Binding NavigateToListingLogViewCommand}">
                     <RadioButton.Content>
-                        <Path Height="20" Width="20" Data="M0 3l20 0l0 4l-20 0l0 -4m0 5l20 0l0 4l-20 0l0 -4m0 5l20 0l0 4l-20 0l0 -4" Fill="{StaticResource TextForegroundColor}"/>
+                        <Path 
+                            Height="20" 
+                            Width="20" 
+                            Data="M0 3l20 0l0 4l-20 0l0 -4m0 5l20 0l0 4l-20 0l0 -4m0 5l20 0l0 4l-20 0l0 -4" 
+                            Fill="{StaticResource TextForegroundColor}" />
                     </RadioButton.Content>
                 </RadioButton>
                 <RadioButton 
                     GroupName="Navigation" 
                     Command="{Binding NavigateToAddLogViewCommand}">
                     <RadioButton.Content>
-                        <Path Height="20" Width="20" Data="m8 0c0 0 -2 4 0 8c0 0 -4 2 -8 0l0 4c0 0 4 2 8 0c0 0 2 4 0 8l4 0c0 0 2 -4 0 -8c0 0 4 -2 8 0l0 -4c0 0 -4 -2 -8 0c0 0 -2 -4 0 -8l-4 0" Fill="{StaticResource TextForegroundColor}"/>
+                        <Path 
+                            Height="20" 
+                            Width="20" 
+                            Data="m8 0c0 0 -2 4 0 8c0 0 -4 2 -8 0l0 4c0 0 4 2 8 0c0 0 2 4 0 8l4 0c0 0 2 -4 0 -8c0 0 4 -2 8 0l0 -4c0 0 -4 -2 -8 0c0 0 -2 -4 0 -8l-4 0" 
+                            Fill="{StaticResource TextForegroundColor}" />
                     </RadioButton.Content>
                 </RadioButton>
             </StackPanel>
