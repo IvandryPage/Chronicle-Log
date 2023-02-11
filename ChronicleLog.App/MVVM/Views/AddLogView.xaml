@@ -5,10 +5,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ChronicleLog.App.MVVM.Views"
+    xmlns:converter="clr-namespace:ChronicleLog.App.Converters"
     mc:Ignorable="d"
     VerticalAlignment="Top"
     d:DesignHeight="600"
     d:DesignWidth="690">
+    <UserControl.Resources>
+        <converter:StringNullToVisibilityConverter x:Key="StringToVisibility" />
+    </UserControl.Resources>
     <Grid Margin="10 20" MaxWidth="800" Focusable="False" KeyboardNavigation.TabNavigation="Cycle">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -21,34 +25,65 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBox 
-            Grid.Row="0"
-            Grid.Column="0"
-            Margin="0 0 10 0"
-            VerticalContentAlignment="Center"
-            TextWrapping="Wrap"
-            Style="{StaticResource TransparentTextBox}"
-            Text="{Binding QueryTitle}" />
-        <TextBox 
-            Grid.Row="0"
-            Grid.Column="1"
-            PreviewKeyDown="CategoryTextBox_PreviewKeyDown"
-            VerticalContentAlignment="Center"
-            CharacterCasing="Upper"
-            Style="{StaticResource TransparentTextBox}"
-            Text="{Binding QueryCategory}" />
-        <TextBox 
-            Grid.Row="1" 
-            Grid.ColumnSpan="2" 
-            Margin="0 10" 
-            MinHeight="80" 
-            MaxHeight="480" 
-            VerticalAlignment="Top" 
-            VerticalContentAlignment="Top" 
-            AcceptsReturn="True"
-            TextWrapping="Wrap"
-            Style="{StaticResource TransparentTextBox}"
-            Text="{Binding QueryParagraph}" />
+        <Grid Grid.Row="0" Grid.Column="0">
+            <TextBox 
+                Margin="0 0 10 0"
+                VerticalContentAlignment="Center"
+                TextWrapping="Wrap"
+                x:Name="TitleTextBox"
+                Style="{StaticResource TransparentTextBox}"
+                Text="{Binding QueryTitle}">
+            </TextBox>
+            <TextBlock 
+                VerticalAlignment="Center" 
+                Padding="10 0 0 0" 
+                Opacity="0.5"
+                Text="Title"
+                IsHitTestVisible="False"
+                Visibility="{Binding ElementName=TitleTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
+                Foreground="{StaticResource TextForegroundColor}"/>
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.Column="1">
+            <TextBox 
+                Grid.Row="0"
+                Grid.Column="1"
+                PreviewKeyDown="CategoryTextBox_PreviewKeyDown"
+                VerticalContentAlignment="Center"
+                CharacterCasing="Upper"
+                x:Name="CategoryTextBox"
+                Style="{StaticResource TransparentTextBox}"
+                Text="{Binding QueryCategory}" />
+            <TextBlock 
+                VerticalAlignment="Center" 
+                Padding="10 0 0 0" 
+                Opacity="0.5"
+                Text="Category"
+                IsHitTestVisible="False"
+                Visibility="{Binding ElementName=CategoryTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
+                Foreground="{StaticResource TextForegroundColor}"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" >
+            <TextBox 
+                Margin="0 10" 
+                MinHeight="80" 
+                MaxHeight="480" 
+                VerticalAlignment="Top" 
+                VerticalContentAlignment="Top" 
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                x:Name="DescriptionTextBox"
+                Style="{StaticResource TransparentTextBox}"
+                Text="{Binding QueryParagraph}" />
+            <TextBlock 
+                Margin="10 12" 
+                Opacity="0.5"
+                Text="Description"
+                IsHitTestVisible="False"
+                Visibility="{Binding ElementName=DescriptionTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
+                Foreground="{StaticResource TextForegroundColor}"/>
+        </Grid>
         
         <StackPanel Grid.Row="1" Grid.Column="2" Focusable="False">
             <Button 
