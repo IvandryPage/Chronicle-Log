@@ -7,7 +7,9 @@
              xmlns:components="clr-namespace:ChronicleLog.App.MVVM.Views.Components"
              xmlns:viewmodel="clr-namespace:ChronicleLog.App.MVVM.ViewModels"
              mc:Ignorable="d"
+             Loaded="ListingUserControl_Loaded"
              x:Name="ListingUserControl"
+             VerticalAlignment="Top"
              SizeChanged="ListingUserControl_SizeChanged"
              d:DesignHeight="600" d:DesignWidth="690">
 

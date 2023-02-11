@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:ChronicleLog.App.MVVM.Views"
     xmlns:viewmodel="clr-namespace:ChronicleLog.App.MVVM.ViewModels"
     mc:Ignorable="d"
+    VerticalAlignment="Center"
     d:DesignHeight="600"
     d:DesignWidth="690">
     

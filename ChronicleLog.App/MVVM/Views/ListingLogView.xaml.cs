@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace ChronicleLog.App.MVVM.Views
 {
@@ -16,5 +18,11 @@ namespace ChronicleLog.App.MVVM.Views
 		{
 			ListingListView.MinWidth = this.ActualWidth - 80;
 		}
-	}
+
+		private void ListingUserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
+		{
+			DoubleAnimation heightAnimation = new DoubleAnimation(0, this.ActualHeight, new Duration(System.TimeSpan.FromMilliseconds(500)), FillBehavior.Stop);
+			ListingListView.BeginAnimation(HeightProperty, heightAnimation);
+        }
+    }
 }
