@@ -6,10 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ChronicleLog.App.MVVM.Views"
     xmlns:viewmodel="clr-namespace:ChronicleLog.App.MVVM.ViewModels"
+    xmlns:converters="clr-namespace:ChronicleLog.App.Converters"
     mc:Ignorable="d"
     d:DesignHeight="600"
     d:DesignWidth="690">
-    
+    <UserControl.Resources>
+        <converters:StringNullToVisibilityConverter x:Key="StringToVisibility" />
+    </UserControl.Resources>
     <StackPanel VerticalAlignment="Center" KeyboardNavigation.TabNavigation="Cycle">
         <Border 
             Background="#FEFEFE"
@@ -47,6 +50,13 @@
                     Command="{Binding DetachLogCategoryCommand}"
                     Style="{StaticResource RoundButton}"
                     Content="➔" />
+                <TextBlock 
+                    Text="Category i.e: Diary" 
+                    Opacity="0.5" 
+                    VerticalAlignment="Center" 
+                    IsHitTestVisible="False"
+                    Margin="15 2 5 2" 
+                    Visibility="{Binding ElementName=DetachLogCategoryTextBox, Path=Text, Converter={StaticResource StringToVisibility}, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </Border>
     </StackPanel>
