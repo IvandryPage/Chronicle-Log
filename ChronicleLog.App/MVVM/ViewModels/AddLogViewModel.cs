@@ -60,13 +60,21 @@ namespace ChronicleLog.App.MVVM.ViewModels
 
 		private void CreateQuery()
 		{
-			LogQueryModel queryModel = new LogQueryModel(System.DateTime.Now, QueryCategory, QueryTitle, QueryParagraph.Trim());
+			Mouse.OverrideCursor = Cursors.Wait;
+			try
+			{
+				LogQueryModel queryModel = new LogQueryModel(System.DateTime.Now, QueryCategory, QueryTitle, QueryParagraph.Trim());
 
-			QueryTitle = QueryParagraph = string.Empty;
+				QueryTitle = QueryParagraph = string.Empty;
 
-			_dataService.Create(queryModel);
+				_dataService.Create(queryModel);
 
-			_dataService.SpecifiedRead(_logQueriesStore, QueryCategory);
+				_dataService.SpecifiedRead(_logQueriesStore, QueryCategory);
+			}
+			finally
+			{
+				Mouse.OverrideCursor = null;
+			}
 		}
 	}
 }

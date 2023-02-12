@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Fonts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="LiteDB" Version="5.0.15" />
   </ItemGroup>
 

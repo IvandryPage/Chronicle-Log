@@ -1,5 +1,7 @@
 ﻿using ChronicleLog.App.MVVM.ViewModels.Commands;
 using ChronicleLog.App.Stores;
+using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -35,15 +37,23 @@ namespace ChronicleLog.App.MVVM.ViewModels
 
 		private void DetachLogCategory()
 		{
-			_dataService.SpecifiedRead(_logQueriesStore, _logCategoryValue);
+			Mouse.OverrideCursor = Cursors.Wait;
+			try
+			{
+				_dataService.SpecifiedRead(_logQueriesStore, _logCategoryValue);
 
-			if ( _logQueriesStore.RequestedLogQueryViewModels.Count != 0 )
-			{
-				_navigationStore.CurrentView = new ListingLogViewModel(_logQueriesStore);
+				if ( _logQueriesStore.RequestedLogQueryViewModels.Count != 0 )
+				{
+					_navigationStore.CurrentView = new ListingLogViewModel(_logQueriesStore);
+				}
+				else
+				{
+					_navigationStore.CurrentView = new AddLogViewModel(_dataService, _logQueriesStore);
+				}
 			}
-			else
+			finally
 			{
-				_navigationStore.CurrentView = new AddLogViewModel(_dataService, _logQueriesStore);
+				Mouse.OverrideCursor = null;
 			}
 		}
 	}
