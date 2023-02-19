@@ -65,7 +65,7 @@ namespace ChronicleLog.App.Services
 		private string GetConnectionString()
 		{
 			string path = Directory.GetCurrentDirectory();
-			string databaseFileName = "80-224-002-36315.db";
+			string databaseFileName = "JournalEntryStorage.db";
 			return Path.Combine(path, databaseFileName);
 		}
 	}

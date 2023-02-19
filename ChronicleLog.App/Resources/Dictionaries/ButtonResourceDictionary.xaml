@@ -9,7 +9,6 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border
                         Name="ButtonContainer"
-                        Margin="{TemplateBinding Margin}"
                         Height="{TemplateBinding Height}"
                         Width="{TemplateBinding Width}"
                         CornerRadius="100"
