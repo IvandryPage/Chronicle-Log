@@ -4,6 +4,7 @@ using ChronicleLog.App.Stores;
 using LiteDB;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace ChronicleLog.App.MVVM.ViewModels
 {
@@ -36,11 +37,16 @@ namespace ChronicleLog.App.MVVM.ViewModels
 
 		private void Delete()
 		{
-			if (SelectedLog != null)
+			if ( SelectedLog != null)
 			{
-				_dataService.Delete(SelectedLog.Id);
-				_logQueryViewModels.Remove(SelectedLog);
-				SelectedLog = null;
+				MessageBoxResult isConfirmed = MessageBox.Show("Are you sure want to delete this entry?", "Confirmation", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+
+				if ( isConfirmed == MessageBoxResult.OK )
+				{
+					_dataService.Delete(SelectedLog.Id);
+					_logQueryViewModels.Remove(SelectedLog);
+					SelectedLog = null;
+				}
 			}
 		}
 	}
