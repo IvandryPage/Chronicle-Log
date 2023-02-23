@@ -40,16 +40,19 @@ namespace ChronicleLog.App.MVVM.ViewModels
 			Mouse.OverrideCursor = Cursors.Wait;
 			try
 			{
-				_dataService.SpecifiedRead(_logQueriesStore, _logCategoryValue);
+				if (!string.IsNullOrEmpty(_logCategoryValue))
+				{
+					_dataService.SpecifiedRead(_logQueriesStore, _logCategoryValue);
 
-				if ( _logQueriesStore.RequestedLogQueryViewModels.Count != 0 )
-				{
-					_navigationStore.CurrentView = new ListingLogViewModel(_logQueriesStore);
-				}
-				else
-				{
-					if(MessageBox.Show("Would you like to create it?", "Category Not Found", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-						_navigationStore.CurrentView = new AddLogViewModel(_dataService, _logQueriesStore);
+					if (_logQueriesStore.RequestedLogQueryViewModels.Count != 0)
+					{
+						_navigationStore.CurrentView = new ListingLogViewModel(_logQueriesStore);
+					}
+					else
+					{
+						if (MessageBox.Show("Would you like to create it?", "Category Not Found", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+							_navigationStore.CurrentView = new AddLogViewModel(_dataService, _logQueriesStore, _logCategoryValue);
+					}
 				}
 			}
 			finally

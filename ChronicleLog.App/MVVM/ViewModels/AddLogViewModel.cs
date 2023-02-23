@@ -46,14 +46,14 @@ namespace ChronicleLog.App.MVVM.ViewModels
 		public ICommand CreateQueryCommand { get; }
 		public ICommand ClearInputCommand { get; }
 
-		public AddLogViewModel(Services.DataService dataservices, LogQueriesStore logQueriesStore)
+		public AddLogViewModel(Services.DataService dataServices, LogQueriesStore logQueriesStore, string category = null)
 		{
 			_logQueriesStore = logQueriesStore;
-			_dataService = dataservices;
+			_dataService = dataServices;
 			ClearInputCommand = new RelayCommand(parameter => ClearInput());
 			CreateQueryCommand = new RelayCommand(parameter => CreateQuery());
-			QueryCategory = ( _logQueriesStore.RequestedLogQueryViewModels.Count != 0 ) ?
-				_logQueriesStore.RequestedLogQueryViewModels[0].Category : string.Empty;
+			QueryCategory = (!string.IsNullOrEmpty(category)) ?
+				category : string.Empty;
 		}
 
 		private void ClearInput() => QueryCategory = QueryTitle = QueryParagraph = string.Empty;
