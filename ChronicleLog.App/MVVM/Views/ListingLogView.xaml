@@ -89,11 +89,11 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListViewItem}">
                                 <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FFF" />
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#DEDEDE" />
                                     </Trigger>
                                 </ControlTemplate.Triggers>
-                                <Border>
+                                <Border Background="{TemplateBinding Background}" CornerRadius="2">
                                     <ContentPresenter 
                                         HorizontalAlignment="Stretch" 
                                         VerticalAlignment="Center"/>
