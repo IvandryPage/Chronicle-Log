@@ -50,7 +50,11 @@ namespace ChronicleLog.App.Services
 
 		public void Update(LogQueryModel query)
 		{
-			throw new NotImplementedException();
+			using(LiteDatabase db = new LiteDatabase(GetConnectionString()))
+			{
+				ILiteCollection<LogQueryModel> collection = db.GetCollection<LogQueryModel>(_collectionName);
+				collection.Update(query);
+			}
 		}
 
 		public void Delete(ObjectId id)

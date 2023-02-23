@@ -1,4 +1,5 @@
 ﻿using ChronicleLog.App.MVVM.Models;
+using ChronicleLog.App.MVVM.ViewModels;
 using ChronicleLog.App.Stores;
 using LiteDB;
 

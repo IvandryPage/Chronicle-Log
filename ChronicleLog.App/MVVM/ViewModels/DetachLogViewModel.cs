@@ -46,12 +46,12 @@ namespace ChronicleLog.App.MVVM.ViewModels
 
 					if (_logQueriesStore.RequestedLogQueryViewModels.Count != 0)
 					{
-						_navigationStore.CurrentView = new ListingLogViewModel(_logQueriesStore, _dataService);
+						_navigationStore.CurrentView = new ListingLogViewModel(_logQueriesStore, _dataService, _navigationStore);
 					}
 					else
 					{
 						if (MessageBox.Show("Would you like to create it?", "Category Not Found", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-							_navigationStore.CurrentView = new AddLogViewModel(_dataService, _logQueriesStore, _logCategoryValue);
+							_navigationStore.CurrentView = new AddLogViewModel(_dataService, _logQueriesStore, _navigationStore, _logCategoryValue);
 					}
 				}
 			}

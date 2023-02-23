@@ -36,7 +36,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 		}
 
 		public object NavigateToDetachLogView() => new DetachLogViewModel(_dataService, _logQueriesStore, _navigationStore);
-		public object NavigateToListingLogView() => new ListingLogViewModel(_logQueriesStore, _dataService);
-		public object NavigateToAddLogView() => new AddLogViewModel(_dataService, _logQueriesStore);
+		public object NavigateToListingLogView() => new ListingLogViewModel(_logQueriesStore, _dataService, _navigationStore);
+		public object NavigateToAddLogView() => new AddLogViewModel(_dataService, _logQueriesStore, _navigationStore);
 	}
 }

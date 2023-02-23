@@ -11,6 +11,9 @@ namespace ChronicleLog.App.MVVM.ViewModels
 	public class ListingLogViewModel : ViewModelBase
 	{
 		private readonly DataService _dataService;
+		private readonly LogQueriesStore _logQueriesStore;
+		private readonly NavigationStore _navigationStore;
+
 		private readonly ObservableCollection<LogQueryViewModel> _logQueryViewModels;
 		public IEnumerable<LogQueryViewModel> LogQueryViewModels => _logQueryViewModels;
 
@@ -26,13 +29,16 @@ namespace ChronicleLog.App.MVVM.ViewModels
 		}
 
 		public RelayCommand DeleteQueryCommand { get; set; }
+		public RelayCommand UpdateQueryCommand { get; set; }
 
-		public ListingLogViewModel(LogQueriesStore logQueriesStore, DataService dataService)
+		public ListingLogViewModel(LogQueriesStore logQueriesStore, DataService dataService, NavigationStore navigationStore)
 		{
+			_logQueriesStore = logQueriesStore;
 			_logQueryViewModels = logQueriesStore.RequestedLogQueryViewModels;
+			_navigationStore = navigationStore;
 			_dataService = dataService;
 
-			DeleteQueryCommand = new RelayCommand(parameter => Delete());
+			DeleteQueryCommand = new RelayCommand(parameter => Update());
 		}
 
 		private void Delete()
@@ -47,6 +53,14 @@ namespace ChronicleLog.App.MVVM.ViewModels
 					_logQueryViewModels.Remove(SelectedLog);
 					SelectedLog = null;
 				}
+			}
+		}
+
+		private void Update()
+		{
+			if ( SelectedLog != null )
+			{
+				_navigationStore.CurrentView = new AddLogViewModel(_dataService, _logQueriesStore, _navigationStore, SelectedLog);
 			}
 		}
 	}

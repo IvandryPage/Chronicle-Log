@@ -8,6 +8,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 	{
 		private readonly LogQueryModel _logQueryModel;
 		public ObjectId Id => _logQueryModel.Id;
+		public System.DateTime CreatedAt => _logQueryModel.CreatedAt;
 		public string Time => _logQueryModel.CreatedAt.ToShortTimeString();
 		public string Day => _logQueryModel.CreatedAt.ToString("dd", CultureInfo.InvariantCulture);
 		public string Month => _logQueryModel.CreatedAt.ToString("MMM", CultureInfo.InvariantCulture);

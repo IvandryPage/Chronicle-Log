@@ -2,6 +2,7 @@
 using ChronicleLog.App.MVVM.ViewModels.Commands;
 using ChronicleLog.App.Stores;
 using LiteDB;
+using System;
 using System.Windows.Input;
 
 namespace ChronicleLog.App.MVVM.ViewModels
@@ -9,6 +10,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 	public class AddLogViewModel : ViewModelBase
 	{
 		private readonly LogQueriesStore _logQueriesStore;
+		private readonly NavigationStore _navigationStore;
 		private readonly Services.DataService _dataService;
 
 		private string _queryCategory;
@@ -47,14 +49,34 @@ namespace ChronicleLog.App.MVVM.ViewModels
 		public ICommand CreateQueryCommand { get; }
 		public ICommand ClearInputCommand { get; }
 
-		public AddLogViewModel(Services.DataService dataServices, LogQueriesStore logQueriesStore, string category = null)
+		public AddLogViewModel(Services.DataService dataServices, LogQueriesStore logQueriesStore, NavigationStore navigationStore, string category = null)
 		{
 			_logQueriesStore = logQueriesStore;
+			_navigationStore = navigationStore;
 			_dataService = dataServices;
 			ClearInputCommand = new RelayCommand(parameter => ClearInput());
+			
 			CreateQueryCommand = new RelayCommand(parameter => CreateQuery());
-			QueryCategory = (!string.IsNullOrEmpty(category)) ?
+
+			QueryCategory = ( !string.IsNullOrEmpty(category) ) ?
 				category : string.Empty;
+		}
+
+		public AddLogViewModel(Services.DataService dataService, LogQueriesStore logQueriesStore, NavigationStore navigationStore, LogQueryViewModel selectedQuery)
+		{
+			_logQueriesStore = logQueriesStore;
+			_navigationStore = navigationStore;
+			_dataService = dataService;
+			ClearInputCommand = new RelayCommand(parameter => ClearInput());
+
+			CreateQueryCommand = new RelayCommand(parameter => UpdateQuery(selectedQuery));
+
+			QueryCategory = ( !string.IsNullOrEmpty(selectedQuery.Category) ) ?
+				selectedQuery.Category : string.Empty;
+			QueryTitle = ( !string.IsNullOrEmpty(selectedQuery.Title) ) ?
+				selectedQuery.Title : string.Empty;
+			QueryParagraph = ( !string.IsNullOrEmpty(selectedQuery.Paragraph) ) ?
+				selectedQuery.Paragraph : string.Empty;
 		}
 
 		private void ClearInput() => QueryCategory = QueryTitle = QueryParagraph = string.Empty;
@@ -71,6 +93,26 @@ namespace ChronicleLog.App.MVVM.ViewModels
 				_dataService.Create(queryModel);
 
 				_dataService.SpecifiedRead(_logQueriesStore, QueryCategory);
+			}
+			finally
+			{
+				Mouse.OverrideCursor = null;
+			}
+		}
+
+		// Create a method for updating query
+		private void UpdateQuery(LogQueryViewModel query)
+		{
+			Mouse.OverrideCursor = Cursors.Wait;
+			try
+			{
+				LogQueryModel updatedQuery = new LogQueryModel(query.Id, query.CreatedAt, QueryCategory, QueryTitle, QueryParagraph);
+
+				_dataService.Update(updatedQuery);
+
+				_dataService.SpecifiedRead(_logQueriesStore, QueryCategory);
+
+				_navigationStore.CurrentView = new ListingLogViewModel(_logQueriesStore, _dataService, _navigationStore);
 			}
 			finally
 			{
