@@ -48,7 +48,8 @@ namespace ChronicleLog.App.MVVM.ViewModels
 				}
 				else
 				{
-					_navigationStore.CurrentView = new AddLogViewModel(_dataService, _logQueriesStore);
+					if(MessageBox.Show("Would you like to create it?", "Category Not Found", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+						_navigationStore.CurrentView = new AddLogViewModel(_dataService, _logQueriesStore);
 				}
 			}
 			finally
