@@ -18,7 +18,8 @@ namespace ChronicleLog.App.Services
 			var collection = db.GetCollection<LogQueryModel>(_collectionName);
 
 			var queryModel = new LogQueryModel(
-				System.DateTime.Now,
+				new ObjectId(),
+				DateTime.Now,
 				query.Category,
 				query.Title,
 				query.Paragraph
@@ -52,15 +53,19 @@ namespace ChronicleLog.App.Services
 			throw new NotImplementedException();
 		}
 
-		public void Delete()
+		public void Delete(ObjectId id)
 		{
-			throw new NotImplementedException();
+			using(LiteDatabase db = new LiteDatabase(GetConnectionString()))
+			{
+				ILiteCollection<LogQueryModel> collection = db.GetCollection<LogQueryModel>(_collectionName);
+				collection.Delete(id);
+			}
 		}
 
 		private string GetConnectionString()
 		{
 			string path = Directory.GetCurrentDirectory();
-			string databaseFileName = "80-224-002-36315.db";
+			string databaseFileName = "JournalEntryStorage.db";
 			return Path.Combine(path, databaseFileName);
 		}
 	}

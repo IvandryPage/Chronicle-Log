@@ -1,6 +1,7 @@
 ﻿using ChronicleLog.App.MVVM.Models;
 using ChronicleLog.App.MVVM.ViewModels.Commands;
 using ChronicleLog.App.Stores;
+using LiteDB;
 using System.Windows.Input;
 
 namespace ChronicleLog.App.MVVM.ViewModels
@@ -63,7 +64,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 			Mouse.OverrideCursor = Cursors.Wait;
 			try
 			{
-				LogQueryModel queryModel = new LogQueryModel(System.DateTime.Now, QueryCategory, QueryTitle, QueryParagraph.Trim());
+				LogQueryModel queryModel = new LogQueryModel(new ObjectId(), System.DateTime.Now, QueryCategory, QueryTitle, QueryParagraph.Trim());
 
 				QueryTitle = QueryParagraph = string.Empty;
 

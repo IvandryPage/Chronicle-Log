@@ -46,7 +46,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 
 					if (_logQueriesStore.RequestedLogQueryViewModels.Count != 0)
 					{
-						_navigationStore.CurrentView = new ListingLogViewModel(_logQueriesStore);
+						_navigationStore.CurrentView = new ListingLogViewModel(_logQueriesStore, _dataService);
 					}
 					else
 					{
