@@ -38,7 +38,8 @@ namespace ChronicleLog.App.MVVM.ViewModels
 			_navigationStore = navigationStore;
 			_dataService = dataService;
 
-			DeleteQueryCommand = new RelayCommand(parameter => Update());
+			DeleteQueryCommand = new RelayCommand(parameter => Delete());
+			UpdateQueryCommand = new RelayCommand(parameter => Update());
 		}
 
 		private void Delete()
