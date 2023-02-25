@@ -46,7 +46,6 @@
             Grid.ColumnSpan="2" 
             Grid.RowSpan="3"
             Margin="0 25 0 0"
-             
             Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}" />
 
         <!--#region EssentialControls -->

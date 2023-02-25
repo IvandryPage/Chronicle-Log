@@ -22,13 +22,13 @@ namespace ChronicleLog.App.MVVM.ViewModels
 			_dataService = dataService;
 			_navigationStore = navigationStore;
 
-			_navigationStore.CurrentView = NavigateToSearchCategoryView();
-
-			_navigationStore.CurrentViewChanged += NavigationStore_CurrentViewChanged;
-
 			NavigateToSearchEntriesViewCommand = new RelayCommand(parameter => _navigationStore.CurrentView = NavigateToSearchCategoryView());
 			NavigateToEntriesListViewCommand = new RelayCommand(parameter => _navigationStore.CurrentView = NavigateToEntriesListView());
 			NavigateToCreateEntryViewCommand = new RelayCommand(parameter => _navigationStore.CurrentView = NavigateToCreateEntryView());
+			
+			_navigationStore.CurrentView = NavigateToSearchCategoryView();
+
+			_navigationStore.CurrentViewChanged += NavigationStore_CurrentViewChanged;
 		}
 
 		private void NavigationStore_CurrentViewChanged()

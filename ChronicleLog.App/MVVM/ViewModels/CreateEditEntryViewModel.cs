@@ -49,25 +49,28 @@ namespace ChronicleLog.App.MVVM.ViewModels
 		public ICommand CreateOrEditEntryCommand { get; }
 		public ICommand ClearInputCommand { get; }
 
-		public CreateEditEntryViewModel(DataService dataService, EntriesStore entriesStore, NavigationStore navigationStore, string category = null)
+		public CreateEditEntryViewModel(DataService dataService, EntriesStore entriesStore, NavigationStore navigationStore)
 		{
 			_entriesStore = entriesStore;
 			_navigationStore = navigationStore;
 			_dataService = dataService;
-			ClearInputCommand = new RelayCommand(parameter => ClearInput());
 
+			ClearInputCommand = new RelayCommand(parameter => ClearInput());
+		}
+
+		// for creating entry
+		public CreateEditEntryViewModel(DataService dataService, EntriesStore entriesStore, NavigationStore navigationStore, string category = null)
+			: this(dataService, entriesStore, navigationStore)
+		{
 			SetEntryValues(category);
 
 			CreateOrEditEntryCommand = new RelayCommand(parameter => CreateEntry());
 		}
 
+		// for editing entry
 		public CreateEditEntryViewModel(DataService dataService, EntriesStore entriesStore, NavigationStore navigationStore, EntryViewModel selectedEntry)
+			: this(dataService, entriesStore, navigationStore)
 		{
-			_entriesStore = entriesStore;
-			_navigationStore = navigationStore;
-			_dataService = dataService;
-			ClearInputCommand = new RelayCommand(parameter => ClearInput());
-
 			SetEntryValues(selectedEntry.Category, selectedEntry.Title, selectedEntry.Paragraph);
 
 			CreateOrEditEntryCommand = new RelayCommand(parameter => EditEntry(selectedEntry));
@@ -92,10 +95,8 @@ namespace ChronicleLog.App.MVVM.ViewModels
 			{
 				EntryModel entryModel = new EntryModel(new ObjectId(), System.DateTime.Now, EntryCategory, EntryTitle, EntryParagraph.Trim());
 
-				EntryTitle = EntryParagraph = string.Empty;
-
 				_dataService.Create(entryModel);
-
+				EntryTitle = EntryParagraph = string.Empty;
 				_dataService.SpecifiedRead(_entriesStore, EntryCategory);
 			}
 			finally
@@ -112,9 +113,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 				EntryModel entryModel = new EntryModel(entry.Id, entry.CreatedAt, EntryCategory, EntryTitle, EntryParagraph);
 
 				_dataService.Update(entryModel);
-
 				_dataService.SpecifiedRead(_entriesStore, EntryCategory);
-
 				_navigationStore.CurrentView = new EntryListingViewModel(_entriesStore, _dataService, _navigationStore);
 			}
 			finally

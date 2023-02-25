@@ -12,15 +12,15 @@ namespace ChronicleLog.App.MVVM.ViewModels
 		private readonly DataService _dataService;
 		private readonly EntriesStore _entriesStore;
 		private readonly NavigationStore _navigationStore;
-
 		private readonly ObservableCollection<EntryViewModel> _entryViewModels;
+
 		public IEnumerable<EntryViewModel> EntryViewModels => _entryViewModels;
 
 		private EntryViewModel _selectedEntry;
 
 		public EntryViewModel SelectedEntry
 		{
-			get { return _selectedEntry; }
+			get => _selectedEntry;
 			set
 			{
 				_selectedEntry = value;
@@ -38,7 +38,6 @@ namespace ChronicleLog.App.MVVM.ViewModels
 			_dataService = dataService;
 
 			_entryViewModels = _entriesStore.RequestedEntries;
-
 			DeleteEntryCommand = new RelayCommand(parameter => DeleteEntry());
 			EditEntryCommand = new RelayCommand(parameter => EditEntry());
 		}
