@@ -38,6 +38,6 @@ namespace ChronicleLog.App.MVVM.ViewModels
 
 		public object NavigateToSearchCategoryView() => new SearchEntriesViewModel(_dataService, _entriesStore, _navigationStore);
 		public object NavigateToEntriesListView() => new EntryListingViewModel(_entriesStore, _dataService, _navigationStore);
-		public object NavigateToCreateEntryView() => new CreateEditEntryViewModel(_dataService, _entriesStore, _navigationStore);
+		public object NavigateToCreateEntryView() => new CreateEditEntryViewModel(_dataService, _entriesStore, _navigationStore, _entriesStore.GetEntriesCategory());
 	}
 }

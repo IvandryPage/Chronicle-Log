@@ -11,5 +11,13 @@ namespace ChronicleLog.App.Stores
 		{
 			RequestedEntries = new ObservableCollection<EntryViewModel>();
 		}
+
+		public string GetEntriesCategory()
+		{
+			if (RequestedEntries.Count != 0)
+				return RequestedEntries[0].Category;
+			else
+				return null;
+		}
 	}
 }
