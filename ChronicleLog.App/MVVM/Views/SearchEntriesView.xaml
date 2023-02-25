@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="ChronicleLog.App.MVVM.Views.DetachLogView"
+    x:Class="ChronicleLog.App.MVVM.Views.SearchEntriesView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -37,9 +37,9 @@
                     IsUndoEnabled="True"
                     MaxLength="20"
                     SelectionBrush="DimGray"
-                    Text="{Binding LogCategoryValue, UpdateSourceTrigger=PropertyChanged}"
-                    PreviewKeyDown="DetachLogCategoryTextBox_PreviewKeyDown"
-                    x:Name="DetachLogCategoryTextBox" />
+                    Text="{Binding CategoryToSearch, UpdateSourceTrigger=PropertyChanged}"
+                    PreviewKeyDown="SearchCategoryTextBox_PreviewKeyDown"
+                    x:Name="SearchCategoryTextBox" />
                 <Button
                     Grid.Column="1"
                     Width="30"
@@ -47,8 +47,8 @@
                     Background="{StaticResource SecondaryButtonBackgroundColor}"
                     Foreground="{StaticResource TextForegroundColor}"
                     VerticalAlignment="Stretch"
-                    x:Name="DetachLogCategoryButton"
-                    Command="{Binding DetachLogCategoryCommand}"
+                    x:Name="SearchEntriesButton"
+                    Command="{Binding SearchCategoryCommand}"
                     Style="{StaticResource RoundButton}"
                     Content="➔" />
                 <TextBlock 
@@ -57,7 +57,7 @@
                     VerticalAlignment="Center" 
                     IsHitTestVisible="False"
                     Margin="15 2 5 2" 
-                    Visibility="{Binding ElementName=DetachLogCategoryTextBox, Path=Text, Converter={StaticResource StringToVisibility}, UpdateSourceTrigger=PropertyChanged}"/>
+                    Visibility="{Binding ElementName=SearchCategoryTextBox, Path=Text, Converter={StaticResource StringToVisibility}, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </Border>
     </StackPanel>

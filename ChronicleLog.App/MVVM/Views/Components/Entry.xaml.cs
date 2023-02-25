@@ -5,9 +5,9 @@ namespace ChronicleLog.App.MVVM.Views.Components
 	/// <summary>
 	/// Interaction logic for LogQuery.xaml
 	/// </summary>
-	public partial class LogQuery : UserControl
+	public partial class Entry : UserControl
 	{
-		public LogQuery()
+		public Entry()
 		{
 			InitializeComponent();
 		}

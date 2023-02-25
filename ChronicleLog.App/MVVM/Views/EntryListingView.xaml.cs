@@ -7,9 +7,9 @@ namespace ChronicleLog.App.MVVM.Views
 	/// <summary>
 	/// Interaction logic for ListingLogView.xaml
 	/// </summary>
-	public partial class ListingLogView : UserControl
+	public partial class EntryListingView : UserControl
 	{
-		public ListingLogView()
+		public EntryListingView()
 		{
 			InitializeComponent();
 		}
@@ -23,6 +23,6 @@ namespace ChronicleLog.App.MVVM.Views
 		{
 			DoubleAnimation heightAnimation = new DoubleAnimation(0, this.ActualHeight, new Duration(System.TimeSpan.FromMilliseconds(500)), FillBehavior.Stop);
 			ListingListView.BeginAnimation(HeightProperty, heightAnimation);
-        }
-    }
+		}
+	}
 }

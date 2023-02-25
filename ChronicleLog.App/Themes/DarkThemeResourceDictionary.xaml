@@ -8,10 +8,10 @@
     <SolidColorBrush x:Key="TertiaryTextForegroundColor" Color="#F41316" />
     <SolidColorBrush x:Key="ButtonBackgroundColor" Color="#08A254" />
     <SolidColorBrush x:Key="SecondaryButtonBackgroundColor" Color="#F44336" />
-    <SolidColorBrush x:Key="LogQueryBackgroundColor" Color="#080606" />
+    <SolidColorBrush x:Key="EntryBackgroundColor" Color="#080606" />
     <SolidColorBrush x:Key="ScrollBarBackgroundColor" Color="#595959" />
 
-    <Color x:Key="LogQueryBoxShadowColor">#412854</Color>
+    <Color x:Key="EntryBoxShadowColor">#412854</Color>
     <Color x:Key="WhiteColor">#FEFEFE</Color>
     <Color x:Key="DarkColor">#0C0D10</Color>
     <Color x:Key="MulberryColor">#C800A7</Color>

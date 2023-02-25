@@ -15,7 +15,7 @@ namespace ChronicleLog.App.MVVM.Views.Components
 
 		private void HelpButton_Click(object sender, RoutedEventArgs e)
 		{
-			if ( HelpBox.Visibility == Visibility.Visible )
+			if (HelpBox.Visibility == Visibility.Visible)
 				HelpBox.Visibility = Visibility.Collapsed;
 			else
 				HelpBox.Visibility = Visibility.Visible;

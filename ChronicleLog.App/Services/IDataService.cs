@@ -1,5 +1,4 @@
 ﻿using ChronicleLog.App.MVVM.Models;
-using ChronicleLog.App.MVVM.ViewModels;
 using ChronicleLog.App.Stores;
 using LiteDB;
 
@@ -7,10 +6,9 @@ namespace ChronicleLog.App.Services
 {
 	interface IDataService
 	{
-		void Create(LogQueryModel query);
-		void ReadAll(LogQueriesStore logStore);
-		void SpecifiedRead(LogQueriesStore logStore, string requestedCategory);
-		void Update(LogQueryModel query);
+		void Create(EntryModel query);
+		void SpecifiedRead(EntriesStore logStore, string requestedCategory);
+		void Update(EntryModel query);
 		void Delete(ObjectId id);
 	}
 }

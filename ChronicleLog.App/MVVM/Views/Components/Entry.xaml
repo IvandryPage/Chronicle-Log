@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ChronicleLog.App.MVVM.Views.Components.LogQuery"
+﻿<UserControl x:Class="ChronicleLog.App.MVVM.Views.Components.Entry"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,9 +8,9 @@
              mc:Ignorable="d"
              Margin="0 5"
              d:DesignHeight="90" d:DesignWidth="680">
-    <Border CornerRadius="7.5" BorderThickness="0.75" BorderBrush="{StaticResource TextForegroundColor}" Background="{StaticResource LogQueryBackgroundColor}">
+    <Border CornerRadius="7.5" BorderThickness="0.75" BorderBrush="{StaticResource TextForegroundColor}" Background="{StaticResource EntryBackgroundColor}">
         <Border.Effect>
-            <DropShadowEffect BlurRadius="15" Color="{StaticResource LogQueryBoxShadowColor}" RenderingBias="Performance" />
+            <DropShadowEffect BlurRadius="15" Color="{StaticResource EntryBoxShadowColor}" RenderingBias="Performance" />
         </Border.Effect>
 
         <Grid TextBlock.Foreground="{StaticResource TextForegroundColor}">

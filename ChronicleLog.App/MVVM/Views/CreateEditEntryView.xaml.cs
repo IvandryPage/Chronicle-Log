@@ -6,16 +6,16 @@ namespace ChronicleLog.App.MVVM.Views
 	/// <summary>
 	/// Interaction logic for AddLogView.xaml
 	/// </summary>
-	public partial class AddLogView : UserControl
+	public partial class CreateEditView : UserControl
 	{
-		public AddLogView()
+		public CreateEditView()
 		{
 			InitializeComponent();
 		}
 
 		private void CategoryTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
 		{
-			if ( e.Key == Key.Space )
+			if (e.Key == Key.Space)
 				e.Handled = true;
 		}
 	}

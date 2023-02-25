@@ -16,14 +16,14 @@
         AllowsTransparency="True"
         Height="600" Width="800">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewmodels:DetachLogViewModel}">
-            <views:DetachLogView />
+        <DataTemplate DataType="{x:Type viewmodels:SearchEntriesViewModel}">
+            <views:SearchEntriesView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:ListingLogViewModel}">
-            <views:ListingLogView />
+        <DataTemplate DataType="{x:Type viewmodels:EntryListingViewModel}">
+            <views:EntryListingView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:AddLogViewModel}">
-            <views:AddLogView />
+        <DataTemplate DataType="{x:Type viewmodels:CreateEditEntryViewModel}">
+            <views:CreateEditView />
         </DataTemplate>
     </Window.Resources>
     
@@ -94,7 +94,7 @@
                 <RadioButton 
                     GroupName="Navigation" 
                     IsChecked="True"
-                    Command="{Binding NavigateToDetachLogViewCommand}">
+                    Command="{Binding NavigateToSearchEntriesViewCommand}">
                     <RadioButton.Content>
                         <Path 
                             Height="20" 
@@ -105,7 +105,7 @@
                 </RadioButton>
                 <RadioButton 
                     GroupName="Navigation" 
-                    Command="{Binding NavigateToListingLogViewCommand}">
+                    Command="{Binding NavigateToEntriesListViewCommand}">
                     <RadioButton.Content>
                         <Path 
                             Height="20" 
@@ -116,7 +116,7 @@
                 </RadioButton>
                 <RadioButton 
                     GroupName="Navigation" 
-                    Command="{Binding NavigateToAddLogViewCommand}">
+                    Command="{Binding NavigateToCreateEntryViewCommand}">
                     <RadioButton.Content>
                         <Path 
                             Height="20" 

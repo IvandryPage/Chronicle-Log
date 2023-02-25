@@ -3,7 +3,7 @@ using System;
 
 namespace ChronicleLog.App.MVVM.Models
 {
-	public class LogQueryModel
+	public class EntryModel
 	{
 		[BsonId]
 		public ObjectId Id { get; set; }
@@ -12,9 +12,7 @@ namespace ChronicleLog.App.MVVM.Models
 		public string Title { get; set; }
 		public string Paragraph { get; set; }
 
-		public LogQueryModel() { }
-
-		public LogQueryModel(ObjectId id, DateTime createdAt, string category, string title, string paragraph)
+		public EntryModel(ObjectId id, DateTime createdAt, string category, string title, string paragraph)
 		{
 			Id = id;
 			CreatedAt = createdAt;

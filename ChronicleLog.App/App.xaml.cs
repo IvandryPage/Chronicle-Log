@@ -10,13 +10,13 @@ namespace ChronicleLog.App
 	/// </summary>
 	public partial class App : Application
 	{
-		private readonly LogQueriesStore _logQueriesStore;
+		private readonly EntriesStore _logQueriesStore;
 		private readonly DataService _dataService;
 		private readonly NavigationStore _navigationStore;
 
 		public App()
 		{
-			_logQueriesStore = new LogQueriesStore();
+			_logQueriesStore = new EntriesStore();
 			_dataService = new DataService();
 			_navigationStore = new NavigationStore();
 		}

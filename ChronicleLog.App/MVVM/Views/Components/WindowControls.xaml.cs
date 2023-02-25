@@ -20,12 +20,12 @@ namespace ChronicleLog.App.MVVM.Views.Components
 
 		private void WindowStateButton_Click(object sender, RoutedEventArgs e)
 		{
-			if ( Application.Current.MainWindow.WindowState != WindowState.Maximized )
+			if (Application.Current.MainWindow.WindowState != WindowState.Maximized)
 			{
 				Application.Current.MainWindow.WindowState = WindowState.Maximized;
 				( (Button)sender ).Content = "⤦";
 			}
-			else if ( Application.Current.MainWindow.WindowState != WindowState.Normal )
+			else if (Application.Current.MainWindow.WindowState != WindowState.Normal)
 			{
 				Application.Current.MainWindow.WindowState = WindowState.Normal;
 				( (Button)sender ).Content = "⤤";
