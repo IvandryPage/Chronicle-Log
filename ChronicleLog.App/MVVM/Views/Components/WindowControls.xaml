@@ -11,19 +11,25 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+        <CheckBox 
+            Grid.Row="0"
+            Unchecked="PinWindowChecBox_Unchecked"
+            Checked="PinWindowChecBox_Checked"/>
+
         <Button
-            Grid.Column="0"
+            Grid.Column="1"
             Click="MinimizeButton_Click"
             Content="&#8212;" />
         <Button 
-            Grid.Column="1"
+            Grid.Column="2"
             Click="WindowStateButton_Click"
             FontSize="16"
             Content="&#10532;" />
         <Button 
-            Grid.Column="2"
+            Grid.Column="3"
             Style="{DynamicResource CloseButton}"
             Click="CloseButton_Click"
             Content="&#8553;" />
