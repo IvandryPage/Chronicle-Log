@@ -75,7 +75,7 @@
                             <ControlTemplate TargetType="{x:Type ListViewItem}">
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="Background" Value="#DEDEDE" />
+                                        <Setter Property="Background" Value="{StaticResource SelectionColor}" />
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                                 <Border Background="{TemplateBinding Background}" CornerRadius="2">
