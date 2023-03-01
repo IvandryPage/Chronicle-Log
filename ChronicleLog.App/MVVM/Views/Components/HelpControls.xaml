@@ -21,7 +21,7 @@
             <Border Background="#17242A" CornerRadius="5">
                 <Grid Margin="10 5">
                     <TextBlock 
-                        Foreground="{StaticResource TextForegroundColor}" 
+                        Foreground="{StaticResource LightText}" 
                         TextWrapping="Wrap">
                         <Run Text="Pro Tips:" />
                         <LineBreak />
@@ -53,7 +53,7 @@
             <Button.Resources>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Foreground" Value="{StaticResource TextForegroundColor}" />
+                    <Setter Property="Foreground" Value="{StaticResource LightText}" />
                     <Setter Property="FontWeight" Value="Bold" />
                     <Setter Property="Focusable" Value="False" />
                     <Setter Property="Template">
@@ -75,7 +75,7 @@
 
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#313131" />
+                            <Setter Property="Background" Value="{StaticResource EntryBackground}" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>

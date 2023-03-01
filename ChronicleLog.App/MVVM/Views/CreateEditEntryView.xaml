@@ -41,7 +41,7 @@
                 Text="Title"
                 IsHitTestVisible="False"
                 Visibility="{Binding ElementName=TitleTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
-                Foreground="{StaticResource TextForegroundColor}"/>
+                Foreground="{StaticResource LightText}"/>
         </Grid>
 
         <Grid Grid.Row="0" Grid.Column="1">
@@ -61,7 +61,7 @@
                 Text="Category"
                 IsHitTestVisible="False"
                 Visibility="{Binding ElementName=CategoryTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
-                Foreground="{StaticResource TextForegroundColor}"/>
+                Foreground="{StaticResource LightText}"/>
         </Grid>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="2" >
@@ -82,7 +82,7 @@
                 Text="Description"
                 IsHitTestVisible="False"
                 Visibility="{Binding ElementName=DescriptionTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
-                Foreground="{StaticResource TextForegroundColor}"/>
+                Foreground="{StaticResource LightText}"/>
         </Grid>
         
         <StackPanel Grid.Row="1" Grid.Column="2" Focusable="False">
@@ -90,16 +90,16 @@
                 Width="30"
                 Height="30"
                 Content="✓"
-                Background="{StaticResource ButtonBackgroundColor}"
-                Foreground="{StaticResource TextForegroundColor}"
+                Background="{StaticResource ConfirmButtonBackground}"
+                Foreground="{StaticResource LightText}"
                 Command="{Binding CreateOrEditEntryCommand}" 
                 Style="{DynamicResource RoundButton}" />
             <Button 
                 Height="30"
                 Width="30"
                 Content="✗" 
-                Background="{StaticResource SecondaryButtonBackgroundColor}" 
-                Foreground="{StaticResource TextForegroundColor}"
+                Background="{StaticResource DeleteButtonBackground}" 
+                Foreground="{StaticResource LightText}"
                 Command="{Binding ClearInputCommand}" 
                 Style="{DynamicResource RoundButton}" />
         </StackPanel>
