@@ -2,13 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style TargetType="{x:Type TextBox}" x:Key="TransparentTextBox">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{StaticResource TextForegroundColor}" />
-        <Setter Property="BorderBrush" Value="{StaticResource TextForegroundColor}" />
-        <Setter Property="CaretBrush" Value="AliceBlue" />
+        <Setter Property="Foreground" Value="{StaticResource LightText}" />
+        <Setter Property="BorderBrush" Value="{StaticResource LightText}" />
+        <Setter Property="CaretBrush" Value="{StaticResource CaretColor}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="5 2" />
         <Setter Property="KeyboardNavigation.TabNavigation" Value="Local" />
-        <Setter Property="SelectionBrush" Value="HotPink" />
+        <Setter Property="SelectionBrush" Value="{StaticResource SelectionColor}" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -19,7 +19,7 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation 
-                                            To="{StaticResource MulberryColor}" 
+                                            To="{StaticResource Active:TextBoxBorder}" 
                                             Duration="0:0:0.2" 
                                             Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)" />
                                         <ThicknessAnimation

@@ -21,7 +21,7 @@ namespace ChronicleLog.App.MVVM.Views
 
 		private void ListingUserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
 		{
-			DoubleAnimation heightAnimation = new DoubleAnimation(0, this.ActualHeight, new Duration(System.TimeSpan.FromMilliseconds(500)), FillBehavior.Stop);
+			DoubleAnimation heightAnimation = new DoubleAnimation(90, this.ActualHeight, new Duration(System.TimeSpan.FromMilliseconds(500)), FillBehavior.Stop);
 			ListingListView.BeginAnimation(HeightProperty, heightAnimation);
 		}
 	}

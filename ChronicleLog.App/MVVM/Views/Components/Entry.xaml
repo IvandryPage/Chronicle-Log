@@ -8,12 +8,12 @@
              mc:Ignorable="d"
              Margin="0 5"
              d:DesignHeight="90" d:DesignWidth="680">
-    <Border CornerRadius="7.5" BorderThickness="0.75" BorderBrush="{StaticResource TextForegroundColor}" Background="{StaticResource EntryBackgroundColor}">
+    <Border CornerRadius="7.5" BorderThickness="0.75" BorderBrush="{StaticResource LightText}" Background="{StaticResource EntryBackground}">
         <Border.Effect>
-            <DropShadowEffect BlurRadius="15" Color="{StaticResource EntryBoxShadowColor}" RenderingBias="Performance" />
+            <DropShadowEffect BlurRadius="15" Color="{StaticResource EntryBoxShadow}" RenderingBias="Performance" />
         </Border.Effect>
 
-        <Grid TextBlock.Foreground="{StaticResource TextForegroundColor}">
+        <Grid TextBlock.Foreground="{StaticResource LightText}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80" />
                 <ColumnDefinition Width="*"/>
