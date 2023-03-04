@@ -13,7 +13,7 @@
         WindowStyle="None"
         ResizeMode="CanResizeWithGrip"
         Title="Chronicle Log"
-        Background="{StaticResource AppBackgroundColor}"
+        Background="{StaticResource ApplicationBackground}"
         AllowsTransparency="True"
         MinHeight="360" MinWidth="360"
         Height="360" Width="360">
@@ -55,7 +55,7 @@
             Grid.Column="0"
             Grid.Row="0"
             Grid.RowSpan="3"
-            Background="{StaticResource SideBarBackgroundColor}">
+            Background="{StaticResource SidebarMenuBackground}">
             <StackPanel VerticalAlignment="Center">
                 <StackPanel.Resources>
                     <ControlTemplate TargetType="{x:Type RadioButton}" x:Key="MenuRadioButton">
@@ -75,16 +75,16 @@
 
                     <Style TargetType="{x:Type RadioButton}">
                         <Setter Property="Background" Value="Transparent" />
-                        <Setter Property="Foreground" Value="{StaticResource TextForegroundColor}" />
+                        <Setter Property="Foreground" Value="{StaticResource LightText}" />
                         <Setter Property="BorderThickness" Value="0" />
-                        <Setter Property="BorderBrush" Value="White" />
+                        <Setter Property="BorderBrush" Value="{StaticResource EntryBorder}" />
                         <Setter Property="Opacity" Value="0.65" />
                         <Setter Property="Cursor" Value="Hand" />
                         <Setter Property="Template" Value="{StaticResource MenuRadioButton}" />
 
                         <Style.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Background" Value="{StaticResource ActiveMenuBackgroundColor}" />
+                                <Setter Property="Background" Value="{StaticResource Active:MenuBackground}" />
                                 <Setter Property="Opacity" Value="0.85" />
                                 <Setter Property="BorderThickness" Value="0.5" />
                             </Trigger>
@@ -101,7 +101,7 @@
                             Height="20" 
                             Width="20" 
                             Data="m8 0c0 0 -8 0 -8 8c0 0 0 8 8 8c0 0 8 0 8 -8c0 0 0 -8 -8 -8M8 2c0 0 -6 0 -6 6c0 0 0 6 6 6c0 0 6 0 6 -6c0 0 0 -6 -6 -6M20 17l-5 -3.5l-2 2l5 5" 
-                            Fill="{StaticResource TextForegroundColor}"/>
+                            Fill="{StaticResource LightText}"/>
                     </RadioButton.Content>
                 </RadioButton>
                 <RadioButton 
@@ -112,7 +112,7 @@
                             Height="20" 
                             Width="20" 
                             Data="M0 3l20 0l0 4l-20 0l0 -4m0 5l20 0l0 4l-20 0l0 -4m0 5l20 0l0 4l-20 0l0 -4" 
-                            Fill="{StaticResource TextForegroundColor}" />
+                            Fill="{StaticResource LightText}" />
                     </RadioButton.Content>
                 </RadioButton>
                 <RadioButton 
@@ -123,7 +123,7 @@
                             Height="20" 
                             Width="20" 
                             Data="m8 0c0 0 -2 4 0 8c0 0 -4 2 -8 0l0 4c0 0 4 2 8 0c0 0 2 4 0 8l4 0c0 0 2 -4 0 -8c0 0 4 -2 8 0l0 -4c0 0 -4 -2 -8 0c0 0 -2 -4 0 -8l-4 0" 
-                            Fill="{StaticResource TextForegroundColor}" />
+                            Fill="{StaticResource LightText}" />
                     </RadioButton.Content>
                 </RadioButton>
             </StackPanel>

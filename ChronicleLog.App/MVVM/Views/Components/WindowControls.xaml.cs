@@ -36,5 +36,15 @@ namespace ChronicleLog.App.MVVM.Views.Components
 		{
 			Application.Current.Shutdown();
 		}
+
+		private void PinWindowChecBox_Unchecked(object sender, RoutedEventArgs e)
+		{
+			Application.Current.MainWindow.Topmost = false;
+		}
+
+		private void PinWindowChecBox_Checked(object sender, RoutedEventArgs e)
+		{
+			Application.Current.MainWindow.Topmost = true;
+		}
 	}
 }
