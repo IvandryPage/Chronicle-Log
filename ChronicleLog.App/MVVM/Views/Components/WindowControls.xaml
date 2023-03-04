@@ -5,25 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChronicleLog.App.MVVM.Views.Components"
              mc:Ignorable="d"
-             d:DesignHeight="35" d:DesignWidth="120">
+             d:DesignHeight="35" d:DesignWidth="150">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+        <CheckBox 
+            Grid.Row="0"
+            Unchecked="PinWindowChecBox_Unchecked"
+            Checked="PinWindowChecBox_Checked"/>
+
         <Button
-            Grid.Column="0"
+            Grid.Column="1"
             Click="MinimizeButton_Click"
             Content="&#8212;" />
         <Button 
-            Grid.Column="1"
+            Grid.Column="2"
             Click="WindowStateButton_Click"
             FontSize="16"
             Content="&#10532;" />
         <Button 
-            Grid.Column="2"
+            Grid.Column="3"
             Style="{DynamicResource CloseButton}"
             Click="CloseButton_Click"
             Content="&#8553;" />
@@ -61,6 +67,39 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="{StaticResource Hover:CloseWindowControlBackground}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <DockPanel 
+                            Background="#121212">
+                            <Path
+                                Height="25"
+                                Data="M19 2l10 0l0 3.5l-2.5 0l0 5l3 0l0 2l-11 0l0 -2l3 0l0 -5l-2.5 0m6 7l-1 13l-1 -13" 
+                                Fill="White">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="25" CenterX="13" CenterY="13" />
+                                        <ScaleTransform ScaleX="0.75" ScaleY="0.75" CenterX="0"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#313131" />
+                    <Setter Property="Cursor" Value="Hand" />
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="ForestGreen" />
                 </Trigger>
             </Style.Triggers>
         </Style>
