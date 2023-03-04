@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyName>Chronicle Log</AssemblyName>
+    <AssemblyName>Chronicle.Log-x64</AssemblyName>
     <Authors>IvandryPage</Authors>
     <Company>IvandryPage</Company>
     <ApplicationIcon>icon.ico</ApplicationIcon>
