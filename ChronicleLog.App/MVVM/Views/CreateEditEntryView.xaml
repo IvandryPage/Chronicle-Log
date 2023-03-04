@@ -8,6 +8,7 @@
     xmlns:converter="clr-namespace:ChronicleLog.App.Converters"
     mc:Ignorable="d"
     VerticalAlignment="Top"
+    SizeChanged="UserControl_SizeChanged"
     d:DesignHeight="600"
     d:DesignWidth="690">
     <UserControl.Resources>
@@ -15,57 +16,59 @@
     </UserControl.Resources>
     <Grid Margin="10 20" MaxWidth="800" Focusable="False" KeyboardNavigation.TabNavigation="Cycle">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="40" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto" MinHeight="35" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0">
-            <TextBox 
-                Margin="0 0 10 0"
-                VerticalContentAlignment="Center"
-                TextWrapping="Wrap"
-                x:Name="TitleTextBox"
-                Style="{StaticResource TransparentTextBox}"
-                Text="{Binding EntryTitle}">
-            </TextBox>
-            <TextBlock 
-                VerticalAlignment="Center" 
-                Padding="10 0 0 0" 
-                Opacity="0.5"
-                Text="Title"
-                IsHitTestVisible="False"
-                Visibility="{Binding ElementName=TitleTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
-                Foreground="{StaticResource LightText}"/>
-        </Grid>
+        <WrapPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" x:Name="TitleCategoryBoxContainer">
+            <Grid Margin="0 5 10 0" Height="30">
+                <TextBox
+                    MinWidth="265"
+                    VerticalContentAlignment="Center"
+                    TextWrapping="Wrap"
+                    x:Name="TitleTextBox"
+                    Style="{StaticResource TransparentTextBox}"
+                    Text="{Binding EntryTitle}">
+                </TextBox>
+                <TextBlock 
+                    VerticalAlignment="Center" 
+                    Padding="10 0 10 0" 
+                    Opacity="0.5"
+                    Text="Title"
+                    IsHitTestVisible="False"
+                    Visibility="{Binding ElementName=TitleTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
+                    Foreground="{StaticResource LightText}"/>
+            </Grid>
 
-        <Grid Grid.Row="0" Grid.Column="1">
-            <TextBox 
-                Grid.Row="0"
-                Grid.Column="1"
-                PreviewKeyDown="CategoryTextBox_PreviewKeyDown"
-                VerticalContentAlignment="Center"
-                CharacterCasing="Upper"
-                x:Name="CategoryTextBox"
-                Style="{StaticResource TransparentTextBox}"
-                Text="{Binding EntryCategory}" />
-            <TextBlock 
-                VerticalAlignment="Center" 
-                Padding="10 0 0 0" 
-                Opacity="0.5"
-                Text="Category"
-                IsHitTestVisible="False"
-                Visibility="{Binding ElementName=CategoryTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
-                Foreground="{StaticResource LightText}"/>
-        </Grid>
+            <Grid Margin="0 5 0 0" Height="30">
+                <TextBox 
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    MinWidth="265"
+                    PreviewKeyDown="CategoryTextBox_PreviewKeyDown"
+                    VerticalContentAlignment="Center"
+                    CharacterCasing="Upper"
+                    x:Name="CategoryTextBox"
+                    Style="{StaticResource TransparentTextBox}"
+                    Text="{Binding EntryCategory}" />
+                <TextBlock 
+                    VerticalAlignment="Center" 
+                    Padding="10 0 10 0" 
+                    Opacity="0.5"
+                    Text="Category"
+                    IsHitTestVisible="False"
+                    Visibility="{Binding ElementName=CategoryTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
+                    Foreground="{StaticResource LightText}"/>
+            </Grid>
+            </WrapPanel>
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2" >
-            <TextBox 
+            <Grid Grid.Row="1">
+            <TextBox
                 Margin="0 10" 
                 MinHeight="80" 
                 MaxHeight="480" 
