@@ -16,7 +16,7 @@
         Background="{StaticResource AppBackgroundColor}"
         AllowsTransparency="True"
         MinHeight="360" MinWidth="360"
-        Height="600" Width="800">
+        Height="360" Width="360">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewmodels:SearchEntriesViewModel}">
             <views:SearchEntriesView />
