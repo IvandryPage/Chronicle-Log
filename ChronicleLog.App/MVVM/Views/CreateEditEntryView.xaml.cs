@@ -1,5 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace ChronicleLog.App.MVVM.Views
 {
@@ -17,6 +19,22 @@ namespace ChronicleLog.App.MVVM.Views
 		{
 			if (e.Key == Key.Space)
 				e.Handled = true;
+		}
+
+		private void UserControl_SizeChanged(object sender, System.Windows.SizeChangedEventArgs e)
+		{
+			if (Application.Current.MainWindow.ActualWidth >= 580)
+			{
+				double width = DescriptionTextBox.ActualWidth / 2.25;
+
+				TitleTextBox.Width = width;
+				CategoryTextBox.Width = width;
+			}
+			else if (Application.Current.MainWindow.ActualWidth <= 360)
+			{
+				TitleTextBox.Width = TitleTextBox.MinWidth;
+				CategoryTextBox.Width = CategoryTextBox.MinWidth;
+			}
 		}
 	}
 }
