@@ -42,7 +42,7 @@
                     Text="Title"
                     IsHitTestVisible="False"
                     Visibility="{Binding ElementName=TitleTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
-                    Foreground="{StaticResource TextForegroundColor}"/>
+                    Foreground="{StaticResource LightText}"/>
             </Grid>
 
             <Grid Margin="0 5 0 0" Height="30">
@@ -63,9 +63,9 @@
                     Text="Category"
                     IsHitTestVisible="False"
                     Visibility="{Binding ElementName=CategoryTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
-                    Foreground="{StaticResource TextForegroundColor}"/>
+                    Foreground="{StaticResource LightText}"/>
             </Grid>
-        </WrapPanel>
+            </WrapPanel>
 
         <Grid Grid.Row="1">
             <TextBox
