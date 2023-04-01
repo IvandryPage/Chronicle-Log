@@ -21,11 +21,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 		public EntryViewModel SelectedEntry
 		{
 			get => _selectedEntry;
-			set
-			{
-				_selectedEntry = value;
-				OnPropertyChanged(nameof(SelectedEntry));
-			}
+			set => SetAndNotify(ref _selectedEntry, value, nameof(SelectedEntry));	
 		}
 
 		public RelayCommand DeleteEntryCommand { get; set; }

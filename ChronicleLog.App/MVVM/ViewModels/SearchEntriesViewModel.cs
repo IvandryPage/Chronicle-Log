@@ -16,11 +16,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 		public string CategoryToSearch
 		{
 			get => _categoryToSearch;
-			set
-			{
-				_categoryToSearch = value;
-				OnPropertyChanged(nameof(CategoryToSearch));
-			}
+			set => SetAndNotify(ref _categoryToSearch, value, nameof(CategoryToSearch));
 		}
 
 		public ICommand SearchCategoryCommand { get; }
