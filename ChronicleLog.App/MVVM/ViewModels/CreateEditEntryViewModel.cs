@@ -3,6 +3,7 @@ using ChronicleLog.App.MVVM.ViewModels.Commands;
 using ChronicleLog.App.Services;
 using ChronicleLog.App.Stores;
 using LiteDB;
+using System;
 using System.Windows.Input;
 
 namespace ChronicleLog.App.MVVM.ViewModels
@@ -90,31 +91,46 @@ namespace ChronicleLog.App.MVVM.ViewModels
 
 		private void CreateEntry()
 		{
-			Mouse.OverrideCursor = Cursors.Wait;
-			try
+			CursorChangesWhileExecuting(() =>
 			{
-				EntryModel entryModel = new EntryModel(new ObjectId(), System.DateTime.Now, EntryCategory, EntryTitle, EntryParagraph.Trim());
+				EntryModel entryModel = new EntryModel(
+					id: new ObjectId(),
+					createdAt: System.DateTime.Now,
+					category: EntryCategory,
+					title: EntryTitle,
+					paragraph: EntryParagraph.Trim()
+				);
 
 				_dataService.Create(entryModel);
 				EntryTitle = EntryParagraph = string.Empty;
 				_dataService.SpecifiedRead(_entriesStore, EntryCategory);
-			}
-			finally
-			{
-				Mouse.OverrideCursor = null;
-			}
+			});
 		}
 
 		private void EditEntry(EntryViewModel entry)
 		{
-			Mouse.OverrideCursor = Cursors.Wait;
-			try
+			CursorChangesWhileExecuting(() =>
 			{
-				EntryModel entryModel = new EntryModel(entry.Id, entry.CreatedAt, EntryCategory, EntryTitle, EntryParagraph);
+				EntryModel entryModel = new EntryModel(
+					id: entry.Id,
+					createdAt: entry.CreatedAt,
+					category: EntryCategory,
+					title: EntryTitle,
+					paragraph: EntryParagraph
+				);
 
 				_dataService.Update(entryModel);
 				_dataService.SpecifiedRead(_entriesStore, EntryCategory);
 				_navigationStore.CurrentView = new EntryListingViewModel(_entriesStore, _dataService, _navigationStore);
+			});
+		}
+
+		private void CursorChangesWhileExecuting(Action act)
+		{
+			Mouse.OverrideCursor = Cursors.Wait;
+			try
+			{
+				act();
 			}
 			finally
 			{
