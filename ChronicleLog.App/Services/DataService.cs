@@ -19,11 +19,11 @@ namespace ChronicleLog.App.Services
 				var collection = db.GetCollection<EntryModel>(_collectionName);
 
 				var queryModel = new EntryModel(
-					new ObjectId(),
-					DateTime.Now,
-					query.Category,
-					query.Title,
-					query.Paragraph
+					id: new ObjectId(),
+					createdAt: DateTime.Now,
+					category: query.Category,
+					title: query.Title,
+					paragraph: query.Paragraph
 				);
 
 				collection.Insert(queryModel);
