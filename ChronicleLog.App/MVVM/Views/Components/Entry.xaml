@@ -33,7 +33,7 @@
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="25" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
 
@@ -42,6 +42,7 @@
                     Margin="8 3"
                     FontWeight="Medium"
                     FontSize="13"
+                    TextWrapping="Wrap"
                     Text="{Binding Title}" />
 
                 <TextBlock 
