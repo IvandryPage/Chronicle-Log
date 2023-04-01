@@ -14,10 +14,7 @@ namespace ChronicleLog.App.Stores
 
 		public string GetEntriesCategory()
 		{
-			if (RequestedEntries.Count != 0)
-				return RequestedEntries[0].Category;
-			else
-				return null;
+			return RequestedEntries.Count != 0 ? RequestedEntries[0].Category : null;
 		}
 	}
 }
