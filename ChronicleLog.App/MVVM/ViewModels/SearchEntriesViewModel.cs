@@ -16,11 +16,7 @@ namespace ChronicleLog.App.MVVM.ViewModels
 		public string CategoryToSearch
 		{
 			get => _categoryToSearch;
-			set
-			{
-				_categoryToSearch = value;
-				OnPropertyChanged(nameof(CategoryToSearch));
-			}
+			set => SetAndNotify(ref _categoryToSearch, value, nameof(CategoryToSearch));
 		}
 
 		public ICommand SearchCategoryCommand { get; }
@@ -39,19 +35,19 @@ namespace ChronicleLog.App.MVVM.ViewModels
 			Mouse.OverrideCursor = Cursors.Wait;
 			try
 			{
-				if (!string.IsNullOrEmpty(_categoryToSearch))
-				{
-					_dataService.SpecifiedRead(_entriesStore, _categoryToSearch);
+				if (string.IsNullOrEmpty(_categoryToSearch))
+					return;
 
-					if (_entriesStore.RequestedEntries.Count != 0)
-					{
-						_navigationStore.CurrentView = new EntryListingViewModel(_entriesStore, _dataService, _navigationStore);
-					}
-					else
-					{
-						if (MessageBox.Show("Would you like to create it?", "Category Not Found", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-							_navigationStore.CurrentView = new CreateEditEntryViewModel(_dataService, _entriesStore, _navigationStore, _categoryToSearch);
-					}
+				_dataService.SpecifiedRead(_entriesStore, _categoryToSearch);
+
+				if (_entriesStore.RequestedEntries.Count != 0)
+				{
+					_navigationStore.CurrentView = new EntryListingViewModel(_entriesStore, _dataService, _navigationStore);
+				}
+				else
+				{
+					if (MessageBox.Show("Would you like to create it?", "Category Not Found", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+						_navigationStore.CurrentView = new CreateEditEntryViewModel(_dataService, _entriesStore, _navigationStore, _categoryToSearch);
 				}
 			}
 			finally

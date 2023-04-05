@@ -26,68 +26,45 @@
         </Grid.RowDefinitions>
 
         <WrapPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" x:Name="TitleCategoryBoxContainer">
-            <Grid Margin="0 5 10 0" Height="30">
-                <TextBox
-                    MinWidth="265"
-                    VerticalContentAlignment="Center"
-                    TextWrapping="Wrap"
-                    x:Name="TitleTextBox"
-                    Style="{StaticResource TransparentTextBox}"
-                    Text="{Binding EntryTitle}">
-                </TextBox>
-                <TextBlock 
-                    VerticalAlignment="Center" 
-                    Padding="10 0 10 0" 
-                    Opacity="0.5"
-                    Text="Title"
-                    IsHitTestVisible="False"
-                    Visibility="{Binding ElementName=TitleTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
-                    Foreground="{StaticResource LightText}"/>
-            </Grid>
-
-            <Grid Margin="0 5 0 0" Height="30">
-                <TextBox 
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    MinWidth="265"
-                    PreviewKeyDown="CategoryTextBox_PreviewKeyDown"
-                    VerticalContentAlignment="Center"
-                    CharacterCasing="Upper"
-                    x:Name="CategoryTextBox"
-                    Style="{StaticResource TransparentTextBox}"
-                    Text="{Binding EntryCategory}" />
-                <TextBlock 
-                    VerticalAlignment="Center" 
-                    Padding="10 0 10 0" 
-                    Opacity="0.5"
-                    Text="Category"
-                    IsHitTestVisible="False"
-                    Visibility="{Binding ElementName=CategoryTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
-                    Foreground="{StaticResource LightText}"/>
-            </Grid>
-            </WrapPanel>
-
-        <Grid Grid.Row="1">
             <TextBox
-                Margin="0 10" 
-                MinHeight="80" 
-                MaxHeight="480" 
-                VerticalAlignment="Top" 
-                VerticalContentAlignment="Top" 
-                AcceptsReturn="True"
+                Margin="0 5 10 0" Height="30"
+                MinWidth="265"
+                VerticalContentAlignment="Center"
                 TextWrapping="Wrap"
-                x:Name="DescriptionTextBox"
+                x:Name="TitleTextBox"
                 Style="{StaticResource TransparentTextBox}"
-                Text="{Binding EntryParagraph}" />
-            <TextBlock 
-                Margin="10 12" 
-                Opacity="0.5"
-                Text="Description"
-                IsHitTestVisible="False"
-                Visibility="{Binding ElementName=DescriptionTextBox, Path=Text, Converter={StaticResource StringToVisibility}}"
-                Foreground="{StaticResource LightText}"/>
-        </Grid>
-        
+                Tag="Title"
+                Text="{Binding EntryTitle}" />
+
+            <TextBox
+                Margin="0 5 0 0" 
+                Height="30"
+                Grid.Row="0"
+                Grid.Column="1"
+                MinWidth="265"
+                PreviewKeyDown="CategoryTextBox_PreviewKeyDown"
+                VerticalContentAlignment="Center"
+                CharacterCasing="Upper"
+                x:Name="CategoryTextBox"
+                Style="{StaticResource TransparentTextBox}"
+                Text="{Binding EntryCategory}"
+                Tag="Category" />
+        </WrapPanel>
+
+        <TextBox
+            Grid.Row="1"
+            Margin="0 10" 
+            MinHeight="80" 
+            MaxHeight="480" 
+            VerticalAlignment="Top" 
+            VerticalContentAlignment="Top" 
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            x:Name="DescriptionTextBox"
+            Style="{StaticResource TransparentTextBox}"
+            Text="{Binding EntryParagraph}" 
+            Tag="Description" />
+
         <StackPanel Grid.Row="1" Grid.Column="2" Focusable="False">
             <Button 
                 Width="30"

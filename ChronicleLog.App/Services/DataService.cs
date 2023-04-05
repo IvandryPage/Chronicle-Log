@@ -4,13 +4,14 @@ using ChronicleLog.App.Stores;
 using LiteDB;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 
 namespace ChronicleLog.App.Services
 {
 	public class DataService : IDataService
 	{
-		private readonly string _collectionName = "logs";
+		private readonly string _collectionName = ConfigurationManager.AppSettings["LogCollectionName"];
 		
 		public void Create(EntryModel query)
 		{
@@ -19,11 +20,11 @@ namespace ChronicleLog.App.Services
 				var collection = db.GetCollection<EntryModel>(_collectionName);
 
 				var queryModel = new EntryModel(
-					new ObjectId(),
-					DateTime.Now,
-					query.Category,
-					query.Title,
-					query.Paragraph
+					id: new ObjectId(),
+					createdAt: DateTime.Now,
+					category: query.Category,
+					title: query.Title,
+					paragraph: query.Paragraph
 				);
 
 				collection.Insert(queryModel);
@@ -67,7 +68,7 @@ namespace ChronicleLog.App.Services
 		private string GetConnectionString()
 		{
 			string path = Directory.GetCurrentDirectory();
-			string databaseFileName = "ChronicleLogDatabase.db";
+			string databaseFileName = ConfigurationManager.AppSettings["DatabaseName"];
 			return Path.Combine(path, databaseFileName);
 		}
 	}
